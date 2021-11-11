@@ -12,7 +12,7 @@ public class Main {
         board.setPlayers(board.getBruh());
         board.setNames(board.getBruh());
         if (board.getGui_player(1).getName().equals("sus")){
-            for (int i = 1; i < board.boardLenght(); i++) {
+            for (int i = 1; i < board.boardLength(); i++) {
                 board.setOwner(board.getGui_player(1),i);
             }
         }

@@ -76,7 +76,7 @@ public class Board {
             fields[0].setCar(maxplayers[i],true );
         }
     }
-    public int boardLenght(){
+    public int boardLength(){
         return fields.length;
     }
     public void setCar(int field, GUI_Player player){
