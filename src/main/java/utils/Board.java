@@ -2,16 +2,12 @@ package utils;
 
 import gui_fields.*;
 import gui_main.GUI;
-
 import java.awt.*;
-import java.util.ArrayList;
 
 public class Board {
     private GUI gui;
     private GUI_Field[] fields;
-    private int playerAmount = 0;
     private int bruh;
-    boolean valid = false;
     GUI_Car car0 = new GUI_Car(Color.RED, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car1 = new GUI_Car(Color.BLUE, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car2 = new GUI_Car(Color.PINK, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
@@ -21,21 +17,23 @@ public class Board {
     GUI_Player gui_player3;
     GUI_Player gui_player4;
     GUI_Player[] maxplayers = new GUI_Player[4];
-
+    GUI_Ownable[] fieldsOwned;
     GUI_Player[] players;
 
     public Board(int size){
-        GUI_Field[] fields = new GUI_Field[size];
+        fields = new GUI_Field[size];
         Color color = new Color(74,204,84);
         for (int i = 0; i < fields.length; i++) {
             GUI_Street test = new GUI_Street();
             fields[i] = test;
         }
+        fieldsOwned = new GUI_Ownable[size];
+        for (int i = 0; i < fieldsOwned.length; i++) {
+            fieldsOwned[i] = (GUI_Ownable) fields[i];
+        }
         fields[1].setBackGroundColor(Color.RED);
         fields[2].setBackGroundColor(Color.RED);
-        GUI gui = new GUI(fields,color);
-        this.gui = gui;
-        this.fields = fields;
+        gui = new GUI(fields,color);
     }
     public void message(String msg){
         gui.showMessage(msg);
@@ -45,14 +43,23 @@ public class Board {
     }
     public int getPlayerAmount(){
         //playerAmount = gui.getUserInteger("How many players?");
-        playerAmount = Integer.valueOf(gui.getUserSelection("how many players?","2","3","4"));
+         int playerAmount = Integer.valueOf(gui.getUserSelection("how many players?", "2", "3", "4"));
         return playerAmount;
     }
-
     public void setOwner(GUI_Player player, int i){
-        GUI_Ownable o;
-        o = (GUI_Ownable) fields[i];
-        o.setBorder(player.getPrimaryColor());
+        //GUI_Ownable o;
+        //o = (GUI_Ownable) fields[i];
+        //o.setBorder(player.getPrimaryColor());
+        fieldsOwned[i].setBorder(player.getPrimaryColor());
+        fieldsOwned[i].setOwnerName(player.getName());
+    }
+
+    public boolean getOwned(int i){
+        if (fieldsOwned[i].getOwnerName()==null){
+            return false;
+        } else{
+            return true;
+        }
     }
     public void createPlayers(int amount)   {
         bruh = amount;
@@ -89,6 +96,10 @@ public class Board {
         return bruh;
     }
     public void setNames(int amount){
+        for (int i = 1; i < amount+1; i++) {
+            players[i-1].setName(getPlayerName("player "+i));
+        }
+        /*
         switch (amount){
             case 2:
                 gui_player1.setName(getPlayerName("player 1"));
@@ -106,6 +117,8 @@ public class Board {
                 gui_player4.setName(getPlayerName("player 4"));
                 break;
         }
+
+         */
     }
     public void movePlayer(GUI_Player player,int spaces) throws InterruptedException {
         int currentfield = getLocation(player);
@@ -141,6 +154,4 @@ public class Board {
 
         return players[player-1];
     }
-
-
 }

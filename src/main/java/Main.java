@@ -1,6 +1,7 @@
 import utils.*;
 
 public class Main {
+
     public static void main(String[] args) throws InterruptedException {
         int curpla = 1;
 
@@ -15,20 +16,30 @@ public class Main {
                 board.setOwner(board.getGui_player(1),i);
             }
         }
-        for (int i = 0; i < 20; i++) {
-            turn(curpla,board,cup);
-            curpla++;
-            if (curpla==board.getBruh()+1){
-                curpla=1;
-            }
-        }
+        board.setOwner(board.getGui_player(1),7 );
+        turn(curpla,board,cup);
 
 
-        board.message(String.valueOf(board.getLocation(board.getGui_player(1))));
+//        for (int i = 0; i < 2; i++) {
+//            turn(curpla,board,cup);
+//            curpla++;
+//            if (curpla==board.getBruh()+1){
+//                curpla=1;
+//            }
+//        }
+
 
     }
     public static void turn(int player,Board board, Cup cup) throws InterruptedException {
-        board.movePlayer(board.getGui_player(player), cup.rollCup());
+        board.movePlayer(board.getGui_player(player), 7);
+        if (board.getOwned(board.getLocation(board.getGui_player(player)))){
+            board.message("abekat");
+            //Some code that gives the possibility to buy the field.
+        } else{
+            board.message("you can buy this");
+            //Some code to make the player pay the debt to the other player, or whatever action that happens.
+        }
+
 
     }
 
