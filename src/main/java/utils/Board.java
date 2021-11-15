@@ -35,13 +35,14 @@ public class Board {
         fields[2].setBackGroundColor(Color.RED);
         gui = new GUI(fields,color);
     }
+
     public void message(String msg){
         gui.showMessage(msg);
     }
     public String getPlayerName(String playerAndNumber){
         return gui.getUserString(playerAndNumber + " please type in your name");
     }
-    public int getPlayerAmount(){
+    public int setPlayerAmount(){
         //playerAmount = gui.getUserInteger("How many players?");
          int playerAmount = Integer.valueOf(gui.getUserSelection("how many players?", "2", "3", "4"));
         return playerAmount;
@@ -153,5 +154,38 @@ public class Board {
     public GUI_Player getGui_player(int player){
 
         return players[player-1];
+    }
+    public void buyField(GUI_Player player){
+        String userInput = gui.getUserSelection("Do you want to buy this field?","Yes","No");
+        if (player.getBalance()>=3){
+            if (userInput.equals("Yes")){
+                setOwner(player,getLocation(player));
+                player.setBalance(player.getBalance()-3);
+            } else{
+                message("Ok weirdo");
+            }
+        }else {
+            message("You don't have the funds to buy this");
+        }
+
+
+    }
+    public GUI_Player findOwner(int i){
+        int owner = 0;
+        for (int j = 0; j < getBruh(); j++) {
+
+            if(fieldsOwned[i].getOwnerName().equals(players[j].getName())){
+                owner = j;
+            }
+        }
+        return players[owner];
+    }
+    public void payFine(GUI_Player unlucky){
+        if (!fieldsOwned[getLocation(unlucky)].getOwnerName().equals(unlucky.getName())){
+            findOwner(getLocation(unlucky)).setBalance(findOwner(getLocation(unlucky)).getBalance()+3);
+            unlucky.setBalance(unlucky.getBalance()-3);
+        }else{
+            message("You own this field");
+        }
     }
 }
