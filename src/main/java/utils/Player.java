@@ -12,6 +12,7 @@ public class Player {
         win  = false;
        this.name = Name;
     }
+    public void updateWallet(int i){}
     public void setTurn(){
         turn = !turn;
     }
