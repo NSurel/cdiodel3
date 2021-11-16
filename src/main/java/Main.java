@@ -29,7 +29,7 @@ public class Main {
             board.payFine(board.getGui_player(player));
             //Some code that gives the possibility to buy the field.
         } else{
-            board.message("you can buy this");
+            board.message("This field is not owned");
             board.buyField(board.getGui_player(player));
             //Some code to make the player pay the debt to the other player, or whatever action that happens.
         }

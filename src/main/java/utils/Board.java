@@ -12,10 +12,7 @@ public class Board {
     GUI_Car car1 = new GUI_Car(Color.BLUE, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car2 = new GUI_Car(Color.PINK, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car3 = new GUI_Car(Color.YELLOW, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
-    GUI_Player gui_player1;
-    GUI_Player gui_player2;
-    GUI_Player gui_player3;
-    GUI_Player gui_player4;
+    GUI_Player gui_player1; GUI_Player gui_player2; GUI_Player gui_player3; GUI_Player gui_player4;
     GUI_Player[] maxplayers = new GUI_Player[4];
     GUI_Ownable[] fieldsOwned;
     GUI_Player[] players;
@@ -26,7 +23,9 @@ public class Board {
         for (int i = 0; i < fields.length; i++) {
             GUI_Street test = new GUI_Street();
             fields[i] = test;
+            fields[i].setTitle(String.valueOf(i));
         }
+        Player player1 = new Player("player1");
         fieldsOwned = new GUI_Ownable[size];
         for (int i = 0; i < fieldsOwned.length; i++) {
             fieldsOwned[i] = (GUI_Ownable) fields[i];
@@ -34,6 +33,7 @@ public class Board {
         fields[1].setBackGroundColor(Color.RED);
         fields[2].setBackGroundColor(Color.RED);
         gui = new GUI(fields,color);
+
     }
 
     public void message(String msg){
@@ -156,19 +156,14 @@ public class Board {
         return players[player-1];
     }
     public void buyField(GUI_Player player){
-        String userInput = gui.getUserSelection("Do you want to buy this field?","Yes","No");
+        //String userInput = gui.getUserSelection("Do you want to buy this field?","Yes","No");
         if (player.getBalance()>=3){
-            if (userInput.equals("Yes")){
                 setOwner(player,getLocation(player));
                 player.setBalance(player.getBalance()-3);
-            } else{
-                message("Ok weirdo");
-            }
+                message("You are now the proud owner of this field");
         }else {
-            message("You don't have the funds to buy this");
+            message("You don't have the funds to buy this. Damn you're poor");
         }
-
-
     }
     public GUI_Player findOwner(int i){
         int owner = 0;
@@ -187,5 +182,8 @@ public class Board {
         }else{
             message("You own this field");
         }
+    }
+    public void setGuiBalance(Player player, GUI_Player guiplayer){
+        guiplayer.setBalance(player.getAccount().getBalance());
     }
 }
