@@ -1,4 +1,5 @@
 package utils;
+//this class can be made abstract if we wish it.
 public class Field {
     /*
         The field name is the title of a field ie. water park.
@@ -15,7 +16,7 @@ public class Field {
     String owner;
     /*
     the field isbuyable sees if a Field can be bought by a player
-    exaples of Fields that can be bought is Amusements
+    examples of Fields that can be bought is Properties
     and fields that cannot be bought is Jail
      */
     boolean isbuyable;

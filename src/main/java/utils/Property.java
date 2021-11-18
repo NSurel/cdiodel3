@@ -23,7 +23,7 @@ public class Property extends Field{
     public void doubleRent(Property [] array) {
         for (int i = 0; i < array.length-1; i++)
             if (array[i].getOwner().equals(array[i+1].getOwner()) ) {
-                array[i].setRent(rent*2);
+                array[i].setRent(this.rent*2);
             }
     }
     //get and set for rent
