@@ -5,12 +5,16 @@ public class Player {
     private boolean turn;
     private boolean win;
     private String name;
+    private Boolean jail;
+    private boolean getoutofjailfreecard;
 
     public Player(String Name){
         account = new Account();
         turn = false;
         win  = false;
        this.name = Name;
+       this.jail = false;
+       this.getoutofjailfreecard = false;
     }
     public void updateWallet(int i){}
     public void setTurn(){
@@ -30,5 +34,18 @@ public class Player {
     }
     public String getName(){
         return name;
+    }
+    public Boolean getJail() {
+        return jail;
+    }
+    public void setJail(Boolean jail) {
+        this.jail = jail;
+    }
+
+    public boolean GetGetoutofjailfreecard() {
+        return getoutofjailfreecard;
+    }
+    public void setGetoutofjailfreecard(boolean getoutofjailfreecard) {
+        this.getoutofjailfreecard = getoutofjailfreecard;
     }
 }
