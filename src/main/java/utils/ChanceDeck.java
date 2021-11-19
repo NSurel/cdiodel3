@@ -13,13 +13,10 @@ public class ChanceDeck {
         PopulateDeck();
         shuffle();
     }
-    //Constructing the cards and giving them their actions too.
+    //Constructing the cards and giving them their actions while adding them to the chanceDeck list.
     public void PopulateDeck() {
-        ChanceCard Birthday = new ChanceCard("It is your birthday! You receive 1 money from each other player");
-        Birthday.addAction("Birthday money", 1);
-        Birthday.addAction("Take money", -1);
-        chanceDeck.add(Birthday);
 
+        //Money cards
         ChanceCard Candy = new ChanceCard("You ate too much candy and must pay!");
         Candy.addAction("Money", -2);
         chanceDeck.add(Candy);
@@ -28,21 +25,90 @@ public class ChanceDeck {
         Homework.addAction("Money", 2);
         chanceDeck.add(Homework);
 
-        ChanceCard SkatePark = new ChanceCard("Move to the skate park and buy it if it is vacant. Otherwise, pay rent to the owner.");
-        SkatePark.addAction("Move to", 10);
+        ChanceCard Birthday = new ChanceCard("It is your birthday! You receive 1 money from each other player");
+        Birthday.addAction("Birthday money", 1);
+        Birthday.addAction("Take money", -1);
+        chanceDeck.add(Birthday);
+
+        //Get out of jail free card
+        ChanceCard getoutofjailfreecard = new ChanceCard("You are free to leave the JAIL!");
+        getoutofjailfreecard.addAction("Escape jail", 0);
+        chanceDeck.add(getoutofjailfreecard);
+
+        //Move to a place cards
+        ChanceCard SkatePark = new ChanceCard("Move to the SKATE PARK and buy it if it is vacant. Otherwise, pay rent to the owner.");
+        SkatePark.addAction("Move to place", 0);
         chanceDeck.add(SkatePark);
 
-        ChanceCard Boardwalk = new ChanceCard("Move to the boardwalk.");
-        Boardwalk.addAction("Move to", 23);
+        ChanceCard Boardwalk = new ChanceCard("Move to the BOARDWALK.");
+        Boardwalk.addAction("Move to place", 0);
         chanceDeck.add(Boardwalk);
 
-        ChanceCard Go = new ChanceCard("Move to the boardwalk.");
-        Go.addAction("Move to", 0);
+        ChanceCard Go = new ChanceCard("Move to GO and collect 2 DD!");
+        Go.addAction("Move to place", 0);
+        Go.addAction("Money", 2);
         chanceDeck.add(Go);
 
-        ChanceCard getoutofjailfreecard = new ChanceCard("You are free to leave the jail!");
-        getoutofjailfreecard.addAction("Escape jail", 1);
-        chanceDeck.add(getoutofjailfreecard);
+        //Special move cards
+        ChanceCard Move5 = new ChanceCard("You may move up to 5 spaces.");
+        Move5.addAction("Move up to", 0);
+        chanceDeck.add(Move5);
+
+        ChanceCard MoveOrDraw = new ChanceCard("Move 1 space or draw a card.");
+        MoveOrDraw.addAction("Move", 1);
+        MoveOrDraw.addAction("Draw", 0);
+        chanceDeck.add(MoveOrDraw);
+
+        //Move to a specific color
+        ChanceCard MoveToOrange = new ChanceCard("Move to an orange space. If the space is vacant then buy it, if not then pay the owner rent.");
+        MoveToOrange.addAction("Move to color", 0);
+        chanceDeck.add(MoveToOrange);
+
+        ChanceCard MoveToRed = new ChanceCard("Move to a red space. If the space is vacant then buy it, if not then pay the owner rent.");
+        MoveToOrange.addAction("Move to color", 0);
+        chanceDeck.add(MoveToRed);
+
+        ChanceCard MoveToLightBlue = new ChanceCard("Move to a light blue space. If the space is vacant then buy it, if not then pay the owner rent.");
+        MoveToOrange.addAction("Move to color", 0);
+        chanceDeck.add(MoveToLightBlue);
+
+        //Move to one of two colors
+        ChanceCard MoveToOrangeOrGreen = new ChanceCard("Move to an orange or green space. If the space is vacant then buy it, if not then pay the owner rent.");
+        MoveToOrange.addAction("Move to one of two colors", 0);
+        chanceDeck.add(MoveToOrangeOrGreen);
+
+        ChanceCard MoveToPinkOrDarkBlue = new ChanceCard("Move to a pink or dark blue space. If the space is vacant then buy it, if not then pay the owner rent.");
+        MoveToOrange.addAction("Move to one of two colors", 0);
+        chanceDeck.add(MoveToPinkOrDarkBlue);
+
+        ChanceCard MoveToLightBlueOrRed = new ChanceCard("Move to a light blue or red space. If the space is vacant then buy, if not then pay the owner rent.");
+        MoveToOrange.addAction("Move to one of two colors", 0);
+        chanceDeck.add(MoveToLightBlueOrRed);
+
+        ChanceCard MoveToBrownOrYellow = new ChanceCard("Move to a brown or yellow space. If the space is vacant then buy, if not then pay the owner rent.");
+        MoveToOrange.addAction("Move to one of two colors", 0);
+        chanceDeck.add(MoveToBrownOrYellow);
+
+        //Player cards
+        ChanceCard CarCard = new ChanceCard("Give this card to the car player and draw a card. On the car player's next turn, that player moves to any a vacant space and buys it. If there isn't any vacant field then buy one from another player.");
+        CarCard.addAction("Give card", 0);
+        CarCard.addAction("Draw",0 );
+        chanceDeck.add(CarCard);
+
+        ChanceCard ShipCard = new ChanceCard("Give this card to the ship player and draw a card. On the ship player's next turn, that player moves to any vacant space and buys it. If there isn't any vacant field then buy one from another player.");
+        ShipCard.addAction("Give card", 0);
+        ShipCard.addAction("Draw",0 );
+        chanceDeck.add(ShipCard);
+
+        ChanceCard CatCard = new ChanceCard("Give this card to the cat player and draw a card. On the cat player's next turn, that player moves to any vacant space and buys it. If there isn't any vacant field then buy one from another player.");
+        CatCard.addAction("Give card", 0);
+        CatCard.addAction("Draw",0 );
+        chanceDeck.add(CatCard);
+
+        ChanceCard DogCard = new ChanceCard("Give this card to the dog player and draw a card. On the dog player's next turn, that player moves to any vacant space and buys it. If there isn't any vacant field then buy one from another player.");
+        DogCard.addAction("Give card", 0);
+        DogCard.addAction("Draw",0 );
+        chanceDeck.add(DogCard);
 
     }
 
