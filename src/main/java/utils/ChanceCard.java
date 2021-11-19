@@ -1,5 +1,7 @@
 package utils;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /*
 Easier cards:
@@ -42,7 +44,7 @@ if there is not a vacant space then buy it from another player.
 public class ChanceCard {
 
     private String text;
-    public HashMap<String, Integer> actions;
+    private HashMap<String, Integer> actions;
 
     //Set and get methods
     void setString(String text) {this.text = text;}
@@ -56,34 +58,24 @@ public class ChanceCard {
     }
 
     //Method for giving cards the action(s) associated with the card.
-    void addAction(String action, int value) {
+    public void addAction(String action, int value) {
          actions.put(action, value);
      }
 
-     //Constructing the cards and giving them their actions too.
-     ChanceCard Birthday = new ChanceCard("It is your birthday! You receive 1 money from each other player");
-     Birthday.addAction("Birthday money", 1);
 
-     ChanceCard Candy = new ChanceCard("You ate too much candy and must pay!");
-     Candy.addAction("Money",-2);
+    public void doActions()
+    {
+        for (Map.Entry<String,Integer> entry : this.actions.entrySet())
+        {
+            String action = entry.getKey();
+            int value = entry.getValue();
 
-     ChanceCard Homework = new ChanceCard("You did all your homework!");
-     Homework.addAction("Money",2);
-
-     ChanceCard SkatePark = new ChanceCard("Move to the skate park and buy it if it is vacant. Otherwise, pay rent to the owner.");
-     SkatePark.addAction("Move to", 10);
-
-     ChanceCard Boardwalk = new ChanceCard("Move to the boardwalk.");
-     Boardwalk.addAction("Move to", 23);
-
-     ChanceCard Go = new ChanceCard("Move to the boardwalk.");
-     Go.addAction("Move to", 0);
-
-     ChanceCard getoutofjailfreecard = new ChanceCard("You are free to leave the jail!");
-     getoutofjailfreecard.addAction("Escape jail", 1);
+            if(action.equals("")){}
+        }
+    }
 
 //If else statements for each action when "processing" the cards, used for later, needs to be a loop with a for each loop.
-     if (action.equals("bank money")){
+   /*  if (action.equals("bank money")){
         //update user's money with value
     }else if (action.equals("birthday money")){
         //update user's money with value*number of players
@@ -93,5 +85,5 @@ public class ChanceCard {
         //give the user the getoutofjailfreecard
     } else if (action.equals("...")){
         //whatever
-    }
+    }*/
 }
