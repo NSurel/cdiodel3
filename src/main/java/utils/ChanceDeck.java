@@ -10,9 +10,11 @@ public class ChanceDeck {
 
     public ChanceDeck()
     {
+        numberOfCardsDrawn = 0;
         PopulateDeck();
         shuffle();
     }
+
     //Constructing the cards and giving them their actions while adding them to the chanceDeck list.
     public void PopulateDeck() {
 
@@ -36,6 +38,11 @@ public class ChanceDeck {
         chanceDeck.add(getoutofjailfreecard);
 
         //Move to a place cards
+        ChanceCard Go = new ChanceCard("Move to GO and collect 2 DD!");
+        Go.addAction("Move to place", 0);
+        Go.addAction("Money", 2);
+        chanceDeck.add(Go);
+
         ChanceCard SkatePark = new ChanceCard("Move to the SKATE PARK and buy it if it is vacant. Otherwise, pay rent to the owner.");
         SkatePark.addAction("Move to place", 0);
         chanceDeck.add(SkatePark);
@@ -44,10 +51,6 @@ public class ChanceDeck {
         Boardwalk.addAction("Move to place", 0);
         chanceDeck.add(Boardwalk);
 
-        ChanceCard Go = new ChanceCard("Move to GO and collect 2 DD!");
-        Go.addAction("Move to place", 0);
-        Go.addAction("Money", 2);
-        chanceDeck.add(Go);
 
         //Special move cards
         ChanceCard Move5 = new ChanceCard("You may move up to 5 spaces.");
@@ -65,11 +68,11 @@ public class ChanceDeck {
         chanceDeck.add(MoveToOrange);
 
         ChanceCard MoveToRed = new ChanceCard("Move to a red space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to color", 0);
+        MoveToOrange.addAction("Move to color", 1);
         chanceDeck.add(MoveToRed);
 
         ChanceCard MoveToLightBlue = new ChanceCard("Move to a light blue space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to color", 0);
+        MoveToOrange.addAction("Move to color", 2);
         chanceDeck.add(MoveToLightBlue);
 
         //Move to one of two colors
@@ -78,15 +81,15 @@ public class ChanceDeck {
         chanceDeck.add(MoveToOrangeOrGreen);
 
         ChanceCard MoveToPinkOrDarkBlue = new ChanceCard("Move to a pink or dark blue space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to one of two colors", 0);
+        MoveToOrange.addAction("Move to one of two colors", 1);
         chanceDeck.add(MoveToPinkOrDarkBlue);
 
         ChanceCard MoveToLightBlueOrRed = new ChanceCard("Move to a light blue or red space. If the space is vacant then buy, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to one of two colors", 0);
+        MoveToOrange.addAction("Move to one of two colors", 2);
         chanceDeck.add(MoveToLightBlueOrRed);
 
         ChanceCard MoveToBrownOrYellow = new ChanceCard("Move to a brown or yellow space. If the space is vacant then buy, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to one of two colors", 0);
+        MoveToOrange.addAction("Move to one of two colors", 3);
         chanceDeck.add(MoveToBrownOrYellow);
 
         //Player cards
@@ -119,14 +122,22 @@ public class ChanceDeck {
         // start from the end of the list
         for (int i = chanceDeck.size() - 1; i >= 1; i--)
         {
-            // get a random index `j` such that `0 <= j <= i`
             int j = random.nextInt(i + 1);
 
-            // swap element at i'th position in the list with the element at
-            // randomly generated index `j`
             ChanceCard chanceCard = chanceDeck.get(i);
             chanceDeck.set(i, chanceDeck.get(j));
             chanceDeck.set(j, chanceCard);
         }
+    }
+    public void draw()
+    {
+        if (numberOfCardsDrawn >= 20){
+            shuffle();
+            numberOfCardsDrawn = 0;
+        }
+        numberOfCardsDrawn++;
+        ChanceCard drawnCard = chanceDeck.get(numberOfCardsDrawn);
+        drawnCard.doActions();
+
     }
 }
