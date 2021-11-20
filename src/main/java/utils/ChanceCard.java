@@ -70,7 +70,19 @@ public class ChanceCard {
             String action = entry.getKey();
             int value = entry.getValue();
 
-            if(action.equals("")){}
+            if(action.equals("Money"))
+            {
+
+            }
+            if(action.equals("Take money")){}
+            if(action.equals("Escape jail")){}
+            if(action.equals("Move to place")){}
+            if(action.equals("Move up to")){}
+            if(action.equals("Move")){}
+            if(action.equals("Draw")){}
+            if(action.equals("Move to color")){}
+            if(action.equals("Move to one of two colors")){}
+            if(action.equals("Give card")){}
         }
     }
 
