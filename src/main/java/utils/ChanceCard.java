@@ -52,7 +52,7 @@ public class ChanceCard {
 
 
     //Constructor for cards with HashMap because some cards have more than one action.
-    ChanceCard(String text) {
+    public ChanceCard(String text) {
         this.text = text;
         actions = new HashMap<String, Integer>();
     }
@@ -63,6 +63,7 @@ public class ChanceCard {
      }
 
 
+     //Possible actions for the chance cards.
     public void doActions()
     {
         for (Map.Entry<String,Integer> entry : this.actions.entrySet())

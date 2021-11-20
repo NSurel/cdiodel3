@@ -8,6 +8,7 @@ public class ChanceDeck {
     private List<ChanceCard> chanceDeck;
     private int numberOfCardsDrawn;
 
+    //Constructor for the chance deck.
     public ChanceDeck()
     {
         numberOfCardsDrawn = 0;
@@ -50,7 +51,6 @@ public class ChanceDeck {
         ChanceCard Boardwalk = new ChanceCard("Move to the BOARDWALK.");
         Boardwalk.addAction("Move to place", 0);
         chanceDeck.add(Boardwalk);
-
 
         //Special move cards
         ChanceCard Move5 = new ChanceCard("You may move up to 5 spaces.");
@@ -112,23 +112,27 @@ public class ChanceDeck {
         DogCard.addAction("Give card", 0);
         DogCard.addAction("Draw",0 );
         chanceDeck.add(DogCard);
-
     }
 
+    //Method for shuffling the deck randomly.
     private void shuffle()
     {
         Random random = new Random();
 
-        // start from the end of the list
+        //for loop of the size of the deck where i decrements
         for (int i = chanceDeck.size() - 1; i >= 1; i--)
         {
+            //Make a new random index so 0 <= i <= j
             int j = random.nextInt(i + 1);
 
+            //puts a random card for the next position
             ChanceCard chanceCard = chanceDeck.get(i);
             chanceDeck.set(i, chanceDeck.get(j));
             chanceDeck.set(j, chanceCard);
         }
     }
+
+    //Method for drawing cards from the chance deck. If all cards (20) are drawn the deck is reshuflled.
     public void draw()
     {
         if (numberOfCardsDrawn >= 20){
