@@ -1,20 +1,39 @@
 package utils;
 
 public class Player {
+    private int pos;
     private Account account;
     private boolean turn;
     private boolean win;
     private String name;
-    private Boolean jail;
+    private boolean jail;
     private boolean getoutofjailfreecard;
 
     public Player(String Name){
-        account = new Account();
-        turn = false;
-        win  = false;
-       this.name = Name;
-       this.jail = false;
-       this.getoutofjailfreecard = false;
+        this.pos =0 ;
+        this.account = new Account();
+        this.turn = false;
+        this.win  = false;
+        this.name = Name;
+        this.jail = false;
+        this.getoutofjailfreecard = false;
+
+    }
+    public void updatePos(Player player, int poschange){
+
+        if(player.getPos() >= 24 ) {
+            this.pos = player.getPos() % 24;
+            player.updateWallet(2);
+        }
+        else{
+            this.pos+=poschange;
+        }
+    }
+    public void setPos(int pos){
+        this.pos = pos;
+    }
+    public int getPos() {
+        return pos;
     }
     public void updateWallet(int i){}
     public void setTurn(){

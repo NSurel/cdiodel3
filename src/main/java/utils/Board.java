@@ -7,7 +7,7 @@ import java.awt.*;
 public class Board {
     private GUI gui;
     private GUI_Field[] fields;
-    private int bruh;
+    private int playerCount;
     GUI_Car car0 = new GUI_Car(Color.RED, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car1 = new GUI_Car(Color.BLUE, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car2 = new GUI_Car(Color.PINK, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
@@ -63,7 +63,7 @@ public class Board {
         }
     }
     public void createPlayers(int amount)   {
-        bruh = amount;
+        playerCount = amount;
         gui_player1 = new GUI_Player("Player1",35,car0);
         gui_player2 = new GUI_Player("Player2",35,car1);
         gui_player3 = new GUI_Player("Player3",35,car2);
@@ -93,8 +93,8 @@ public class Board {
         }
         return i;
     }
-    public int getBruh(){
-        return bruh;
+    public int getPlayerCount(){
+        return playerCount;
     }
     public void setNames(int amount){
         for (int i = 1; i < amount+1; i++) {
@@ -172,7 +172,7 @@ public class Board {
     }
     public GUI_Player findOwner(int i){
         int owner = 0;
-        for (int j = 0; j < getBruh(); j++) {
+        for (int j = 0; j < getPlayerCount(); j++) {
 
             if(fieldsOwned[i].getOwnerName().equals(players[j].getName())){
                 owner = j;

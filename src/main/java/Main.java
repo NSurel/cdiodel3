@@ -9,16 +9,17 @@ public class Main {
         Cup cup = new Cup(board,6);
 
         board.createPlayers(board.setPlayerAmount());
-        board.setPlayers(board.getBruh());
-        board.setNames(board.getBruh());
+        board.setPlayers(board.getPlayerCount());
+        board.setNames(board.getPlayerCount());
 
         while (gaming(board)){
             turn(curpla,board,cup);
             curpla++;
-            if (curpla==board.getBruh()+1){
+            if (curpla==board.getPlayerCount()+1){
                 curpla=1;
             }
         }
+
 
 
     }
@@ -36,7 +37,7 @@ public class Main {
     }
     public static boolean gaming(Board board){
         boolean gaming = true;
-        for (int i = 1; i < board.getBruh()+1; i++) {
+        for (int i = 1; i < board.getPlayerCount()+1; i++) {
             if (board.getGui_player(i).getBalance()<=0){
                 gaming = false;
             }
