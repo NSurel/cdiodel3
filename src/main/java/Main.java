@@ -21,6 +21,7 @@ public class Main {
         }
 
 
+
     }
     public static void turn(int player,Board board, Cup cup) throws InterruptedException {
         board.movePlayer(board.getGui_player(player), cup.rollCup());
