@@ -19,6 +19,22 @@ public class Player {
         this.getoutofjailfreecard = false;
 
     }
+    public void updatePos(Player player, int poschange){
+
+        if(player.getPos() >= 24 ) {
+            this.pos = player.getPos() % 24;
+            player.updateWallet(2);
+        }
+        else{
+            this.pos+=poschange;
+        }
+    }
+    public void setPos(int pos){
+        this.pos = pos;
+    }
+    public int getPos() {
+        return pos;
+    }
     public void updateWallet(int i){}
     public void setTurn(){
         turn = !turn;
