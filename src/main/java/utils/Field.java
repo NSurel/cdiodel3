@@ -4,22 +4,22 @@ public class Field {
     /*
         The field name is the title of a field ie. water park.
      */
-    String name;
+   private String name;
     /*
         the field subtext shows the cost of buying the field and when it's bought
         the rent and the name of the owner
      */
-    String subtext;
+    private String subtext;
     /*
     The field owner references which player owns the field
      */
-    String owner;
+    private String owner;
     /*
     the field isbuyable sees if a Field can be bought by a player
     examples of Fields that can be bought is Properties
     and fields that cannot be bought is Jail
      */
-    boolean isbuyable;
+    private boolean isbuyable;
 
     public Field(String name, String subtext, String owner, boolean isbuyable){
         this.name = name;
