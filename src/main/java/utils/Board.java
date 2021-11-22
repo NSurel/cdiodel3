@@ -122,6 +122,7 @@ public class Board {
          */
     }
     public void movePlayer(GUI_Player player,int spaces) throws InterruptedException {
+        gui.setDie(spaces);
         int currentfield = getLocation(player);
         int steps = currentfield+spaces;
         fields[currentfield].setCar(player,false);
@@ -142,9 +143,7 @@ public class Board {
             Thread.sleep(500L);
         }
     }
-    public void setDice(int dice1, int dice2){
-        gui.setDice(dice1,9,2,dice2,10,2);
-    }
+
     public void setPlayers(int i){
         players = new GUI_Player[i];
         for (int j = 0; j < i; j++) {
