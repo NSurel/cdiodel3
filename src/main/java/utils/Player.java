@@ -6,7 +6,7 @@ public class Player {
     private boolean turn;
     private boolean win;
     private String name;
-    private Boolean jail;
+    private boolean jail;
     private boolean getoutofjailfreecard;
 
     public Player(String Name){
