@@ -6,7 +6,7 @@ public class Main {
         int curpla = 1;
 
         Board board = new Board(24);
-        Cup cup = new Cup(board,6);
+        Cup cup = new Cup(6);
 
         board.createPlayers(board.setPlayerAmount());
         board.setPlayers(board.getPlayerCount());
