@@ -1,6 +1,6 @@
 package utils;
 //this class can be made abstract if we wish it.
-public class Field {
+public abstract class Field {
     /*
         The field name is the title of a field ie. water park.
      */
