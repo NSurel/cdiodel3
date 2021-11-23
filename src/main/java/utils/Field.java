@@ -64,6 +64,6 @@ public abstract class Field {
 
     public abstract void landedOn();
 
-    public abstract void landedOn(ChanceDeck chanceDeck);
+    public abstract void landedOn(ChanceDeck chanceDeck, PlayerController playerController);
 
 }

@@ -1,27 +1,38 @@
 package utils;
-import java.util.List;
+import java.util.ArrayList;
 
 public class PlayerController {
-    private List<Player> players;
-    private int currentPlayer;
+    private ArrayList<Player> players;
+    private Player currentPlayer;
+    private  int currentPlayerNum;
 
     public PlayerController()
     {
-        currentPlayer = 1;
+        currentPlayerNum = 1;
     }
 
     public int getPlayerAmount(){
         return players.size();
     }
 
-    public int getCurrentPlayer() {
+    public Player getCurrentPlayer() {
         return currentPlayer;
     }
+
+    public ArrayList<Player> getAllPlayers()
+    {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
     public void setCurrentPlayer() {
-        currentPlayer++;
-        if (currentPlayer >= players.size())
+        currentPlayerNum++;
+        if (currentPlayerNum >= players.size())
         {
-            currentPlayer = 1;
+            currentPlayerNum = 1;
         }
     }
 

@@ -3,7 +3,6 @@ package utils;
 public class Player {
     private int pos;
     private Account account;
-    private boolean turn;
     private boolean win;
     private String name;
     private boolean jail;
@@ -12,7 +11,6 @@ public class Player {
     public Player(String Name){
         this.pos =0 ;
         this.account = new Account();
-        this.turn = false;
         this.win  = false;
         this.name = Name;
         this.jail = false;
@@ -34,17 +32,11 @@ public class Player {
         return pos;
     }
     public void updateWallet(int i){}
-    public void setTurn(){
-        turn = !turn;
-    }
     public void setWin(boolean x) {
         win = x;
     }
     public Account getAccount(){
         return account;
-    }
-    public boolean getTurn(){
-        return turn;
     }
     public boolean getWin(){
         return win;

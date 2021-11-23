@@ -30,7 +30,6 @@ public class ChanceDeck {
 
         ChanceCard Birthday = new ChanceCard("It is your birthday! You receive 1 money from each other player");
         Birthday.addAction("Birthday money", 1);
-        Birthday.addAction("Take money", -1);
         chanceDeck.add(Birthday);
 
         //Get out of jail free card
@@ -58,8 +57,7 @@ public class ChanceDeck {
         chanceDeck.add(Move5);
 
         ChanceCard MoveOrDraw = new ChanceCard("Move 1 space or draw a card.");
-        MoveOrDraw.addAction("Move", 1);
-        MoveOrDraw.addAction("Draw", 0);
+        MoveOrDraw.addAction("Move or draw", 0);
         chanceDeck.add(MoveOrDraw);
 
         //Move to a specific color
@@ -133,7 +131,7 @@ public class ChanceDeck {
     }
 
     //Method for drawing cards from the chance deck. If all cards (20) are drawn the deck is reshuflled.
-    public void draw()
+    public void draw(PlayerController playerController)
     {
         if (numberOfCardsDrawn >= 20){
             shuffle();
@@ -141,7 +139,7 @@ public class ChanceDeck {
         }
         numberOfCardsDrawn++;
         ChanceCard drawnCard = chanceDeck.get(numberOfCardsDrawn);
-        drawnCard.doActions();
+        drawnCard.doActions(playerController, this);
 
     }
 }
