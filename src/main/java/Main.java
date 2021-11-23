@@ -3,17 +3,26 @@ import utils.*;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        PlayerController players = new PlayerController();
+        /*int curpla = 1;
+
         Board board = new Board(24);
-        Cup cup = new Cup(6);
+        Cup cup = new Cup(board,6);
 
         board.createPlayers(board.setPlayerAmount());
         board.setPlayers(board.getPlayerCount());
         board.setNames(board.getPlayerCount());
 
         while (gaming(board)){
-            players.setCurrentPlayer();
+            turn(curpla,board,cup);
+            curpla++;
+            if (curpla==board.getPlayerCount()+1){
+                curpla=1;
+            }
         }
+        */
+
+
+
 
 
 

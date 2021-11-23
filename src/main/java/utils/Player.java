@@ -20,14 +20,12 @@ public class Player {
 
     }
     public void updatePos(Player player, int poschange){
-
+        this.pos += poschange;
         if(player.getPos() >= 24 ) {
             this.pos = player.getPos() % 24;
             player.updateWallet(2);
         }
-        else{
-            this.pos+=poschange;
-        }
+
     }
     public void setPos(int pos){
         this.pos = pos;

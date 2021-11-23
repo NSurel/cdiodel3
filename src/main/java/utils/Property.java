@@ -7,7 +7,7 @@ public class Property extends Field{
     //waiting for GUI elements etc, idc what they wanna add.
     private  int rent;
 
-    public Property(String name, String subtext, int rent, String owner, boolean isbuyable){
+    public Property(String name, String subtext, int rent, String owner){
         super(name, subtext, owner, true);
         this.rent=rent;
     }
