@@ -19,7 +19,7 @@ public class PlayerController {
     }
     public void setCurrentPlayer() {
         currentPlayer++;
-        if (currentPlayer >= players.size())
+        if (currentPlayer > players.size())
         {
             currentPlayer = 1;
         }

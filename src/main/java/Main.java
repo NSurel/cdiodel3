@@ -25,8 +25,8 @@ public class Main {
         Hello[0]= hell02;
         System.out.println(Hello[0].getRent());
         //TODO
-        // Make a method that instanciates the fields
-        //      (start with the properties and jail
+        //  Make a method that instanciates the fields
+        //   (start with the properties and jail)
         //
 
 
