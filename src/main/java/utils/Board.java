@@ -5,6 +5,9 @@ import gui_main.GUI;
 import java.awt.*;
 
 public class Board {
+
+    //todo
+    // change order of methods, to make more sense and make it more readable
     private GUI gui;
     private GUI_Field[] fields;
     private int playerCount;
@@ -21,6 +24,9 @@ public class Board {
     GUI_Player[] players;
 
     public Board(int size){
+        //todo
+        // make a GUI_Field[] that matches the actual game one
+        // with correspondings titles, subtexts, and backgroundcolors
         fields = new GUI_Field[size];
         Color color = new Color(74,204,84);
         for (int i = 0; i < fields.length; i++) {
@@ -39,6 +45,7 @@ public class Board {
     public void message(String msg){
         gui.showMessage(msg);
     }
+
     public String getPlayerName(String playerAndNumber){
         return gui.getUserString(playerAndNumber + " please type in your name");
     }
@@ -47,10 +54,11 @@ public class Board {
          int playerAmount = Integer.valueOf(gui.getUserSelection("how many players?", "2", "3", "4"));
         return playerAmount;
     }
+
+    //todo
+    // work with Player class and Field classes instead
+    // and with the input from them change the border color of GUI_Fields
     public void setOwner(GUI_Player player, int i){
-        //GUI_Ownable o;
-        //o = (GUI_Ownable) fields[i];
-        //o.setBorder(player.getPrimaryColor());
         fieldsOwned[i].setBorder(player.getPrimaryColor());
         fieldsOwned[i].setOwnerName(player.getName());
     }
@@ -77,15 +85,8 @@ public class Board {
             fields[0].setCar(maxplayers[i],true );
         }
     }
-    public int boardLength(){
-        return fields.length;
-    }
-    public void setCar(int field, GUI_Player player){
-        fields[field].setCar(player, true);
-    }
-    public void removeCar(int field, GUI_Player player){
-        fields[field].setCar(player, false);
-    }
+    //todo
+    // change to find the Player's location and not GUI_Player
     public int getLocation(GUI_Player player){
         int i = 0;
         while(!fields[i].hasCar(player)){
@@ -96,31 +97,17 @@ public class Board {
     public int getPlayerCount(){
         return playerCount;
     }
+
+    //todo
+    //
     public void setNames(int amount){
         for (int i = 1; i < amount+1; i++) {
             players[i-1].setName(getPlayerName("player "+i));
         }
-        /*
-        switch (amount){
-            case 2:
-                gui_player1.setName(getPlayerName("player 1"));
-                gui_player2.setName(getPlayerName("player 2"));
-                break;
-            case 3:
-                gui_player1.setName(getPlayerName("player 1"));
-                gui_player2.setName(getPlayerName("player 2"));
-                gui_player3.setName(getPlayerName("player 3"));
-                break;
-            case 4:
-                gui_player1.setName(getPlayerName("player 1"));
-                gui_player2.setName(getPlayerName("player 2"));
-                gui_player3.setName(getPlayerName("player 3"));
-                gui_player4.setName(getPlayerName("player 4"));
-                break;
-        }
-
-         */
     }
+    //todo
+    // change this method, its unnecessary. Just move piece from current location to new location.
+    //
     public void movePlayer(GUI_Player player,int spaces) throws InterruptedException {
         gui.setDie(spaces);
         int currentfield = getLocation(player);
@@ -154,6 +141,9 @@ public class Board {
 
         return players[player-1];
     }
+
+    //todo
+    // should work with the Field classes instead
     public void buyField(GUI_Player player){
         String userInput = gui.getUserSelection("Do you want to buy this field?","Yes","No");
         if (player.getBalance()>=3){
@@ -169,6 +159,9 @@ public class Board {
 
 
     }
+
+    //todo
+    // should also work with the Field classes
     public GUI_Player findOwner(int i){
         int owner = 0;
         for (int j = 0; j < getPlayerCount(); j++) {
@@ -179,6 +172,8 @@ public class Board {
         }
         return players[owner];
     }
+    //todo
+    // work with Player class and Account class instead
     public void payFine(GUI_Player unlucky){
         if (!fieldsOwned[getLocation(unlucky)].getOwnerName().equals(unlucky.getName())){
             findOwner(getLocation(unlucky)).setBalance(findOwner(getLocation(unlucky)).getBalance()+3);
