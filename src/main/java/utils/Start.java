@@ -14,4 +14,14 @@ public class Start extends Field{
     public int getRent() {
         return 0;
     }
+
+    @Override
+    public void landedOn() {
+
+    }
+
+    @Override
+    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController) {
+
+    }
 }

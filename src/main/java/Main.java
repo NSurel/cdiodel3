@@ -38,7 +38,7 @@ public class Main {
             board.message("Pay the court a fine or serve your sentence");
             board.payFine(board.getGui_player(player));
             //Some code that gives the possibility to buy the field.
-        } else{
+        } else {
             board.message("you can buy this");
             board.buyField(board.getGui_player(player));
             //Some code to make the player pay the debt to the other player, or whatever action that happens.

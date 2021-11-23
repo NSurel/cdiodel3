@@ -32,6 +32,16 @@ public class Property extends Field{
         return rent;
     }
 
+    @Override
+    public void landedOn() {
+
+    }
+
+    @Override
+    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController) {
+
+    }
+
     public void setRent(int rent) {
         this.rent = rent;
     }
