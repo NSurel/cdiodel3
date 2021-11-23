@@ -7,7 +7,8 @@ import java.awt.*;
 public class Board {
 
     //todo
-    // change order of methods, to make more sense and make it more readable
+    // change order of methods, to make more sense and make it more readable.
+    // Change methods to be ready for controllers input to the GUI
     private GUI gui;
     private GUI_Field[] fields;
     private int playerCount;
