@@ -7,6 +7,9 @@ import java.awt.*;
 public class Board {
 
     //todo
+    // work on a translator with .txt file to read from
+
+    //todo
     // change order of methods, to make more sense and make it more readable.
     // Change methods to be ready for controllers input to the GUI
     private GUI gui;
@@ -100,7 +103,7 @@ public class Board {
     }
 
     //todo
-    //
+    // set names from the Player class onto the GUI_Players
     public void setNames(int amount){
         for (int i = 1; i < amount+1; i++) {
             players[i-1].setName(getPlayerName("player "+i));
