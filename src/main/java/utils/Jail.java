@@ -25,4 +25,9 @@ public class Jail extends Field {
     public Boolean getVisiting() {
         return isVisiting;
     }
+
+    @Override
+    public int getRent() {
+        return 0;
+    }
 }

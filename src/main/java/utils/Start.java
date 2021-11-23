@@ -6,5 +6,12 @@ public class Start extends Field{
         super(name, subtext,null, false);
         fare = 2;
     }
+    public int getFare(){
+        return this.fare;
+    }
 
+    @Override
+    public int getRent() {
+        return 0;
+    }
 }

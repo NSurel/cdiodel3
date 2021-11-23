@@ -20,9 +20,14 @@ public class Main {
             }
         }
         */
-
-
-
+        Field[] Hello = new Field[2];
+        Property hell02 = new Property("hell" ,"din mor", 2, "Din far");
+        Hello[0]= hell02;
+        System.out.println(Hello[0].getRent());
+        //TODO
+        // Make a method that instanciates the fields
+        //      (start with the properties and jail
+        //
 
 
 

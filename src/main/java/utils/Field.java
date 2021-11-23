@@ -59,4 +59,7 @@ public abstract class Field {
     public void setSubtext(String subtext) {
         this.subtext = subtext;
     }
+
+    public abstract int getRent();
+
 }
