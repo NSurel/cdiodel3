@@ -6,13 +6,12 @@ public class PlayerController {
 
     public PlayerController(Board players, Player player){
         this.players = players;
-        this.player = player;
-    }
 
-    public int getCurrentPlayerAmount(){
+    }
+    public int getPlayerAmount(){
         return players.getPlayerCount();
     }
-    public void setCurrentPlayerAmount(int player){
+    public void setPlayerAmount(int player){
         players.createPlayers(player);
     }
 
