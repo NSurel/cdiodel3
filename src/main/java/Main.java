@@ -3,8 +3,7 @@ import utils.*;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        int curpla = 1;
-
+        PlayerController players = new PlayerController();
         Board board = new Board(24);
         Cup cup = new Cup(6);
 
@@ -13,11 +12,7 @@ public class Main {
         board.setNames(board.getPlayerCount());
 
         while (gaming(board)){
-            turn(curpla,board,cup);
-            curpla++;
-            if (curpla==board.getPlayerCount()+1){
-                curpla=1;
-            }
+            players.setCurrentPlayer();
         }
 
 

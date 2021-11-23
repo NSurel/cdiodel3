@@ -1,18 +1,28 @@
 package utils;
+import java.util.List;
 
 public class PlayerController {
-    private Board players;
-    private Player player;
+    private List<Player> players;
+    private int currentPlayer;
 
-    public PlayerController(Board players, Player player){
-        this.players = players;
-
+    public PlayerController()
+    {
+        currentPlayer = 1;
     }
+
     public int getPlayerAmount(){
-        return players.getPlayerCount();
+        return players.size();
     }
-    public void setPlayerAmount(int player){
-        players.createPlayers(player);
+
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+    public void setCurrentPlayer() {
+        currentPlayer++;
+        if (currentPlayer >= players.size())
+        {
+            currentPlayer = 1;
+        }
     }
 
 
