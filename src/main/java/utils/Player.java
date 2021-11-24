@@ -9,7 +9,7 @@ public class Player {
     private boolean getoutofjailfreecard;
 
     public Player(String Name){
-        this.pos =0 ;
+        this.pos = 0 ;
         this.account = new Account();
         this.win  = false;
         this.name = Name;

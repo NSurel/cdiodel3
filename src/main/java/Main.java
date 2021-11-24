@@ -1,35 +1,44 @@
 import utils.*;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args){
-        /*int curpla = 1;
+    public static void main(String[] args) throws IOException {
+        write("Start,Start,This is the start field");
+        FieldController fieldController = new FieldController();
+        Board board = new Board(24,fieldController.getFields());
+        PlayerController playerController = new PlayerController();
+        Cup cup = new Cup(6);
+        playerController.CreatePLayers(board);
 
-        Board board = new Board(24);
-        Cup cup = new Cup(board,6);
 
-        board.createPlayers(board.setPlayerAmount());
-        board.setPlayers(board.getPlayerCount());
-        board.setNames(board.getPlayerCount());
+        //board.createPlayers(board.setPlayerAmount());
+        //board.setPlayers(board.getPlayerCount());
+        //board.setNames(board.getPlayerCount());
 
-        while (gaming(board)){
-            turn(curpla,board,cup);
-            curpla++;
-            if (curpla==board.getPlayerCount()+1){
-                curpla=1;
-            }
-        }
-        */
-        Field[] Hello = new Field[2];
+        /*Field[] Hello = new Field[2];
         Property hell02 = new Property("hell" ,"din mor", 2, "Din far");
         Hello[0]= hell02;
-        System.out.println(Hello[0].getRent());
+        System.out.println(Hello[0].getRent());*/
         //TODO
         // Make a method that instanciates the fields
         //      (start with the properties and jail
         //
 
 
+
+    }
+    public static void write(String testToWrite) throws IOException {
+        String mitFilnavn = "Fields.txt";
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(mitFilnavn));
+        writer.write(testToWrite); //skriver streng til filen
+        writer.newLine(); //skriver ny line til filen
+        writer.close();
 
     }
     //todo

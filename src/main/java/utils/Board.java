@@ -3,6 +3,7 @@ package utils;
 import gui_fields.*;
 import gui_main.GUI;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Board {
 
@@ -27,7 +28,7 @@ public class Board {
     GUI_Ownable[] fieldsOwned;
     GUI_Player[] players;
 
-    public Board(int size,Field[] fields){
+    public Board(int size, ArrayList<Field> fields){
         //todo
         // make a GUI_Field[] that matches the actual game one
         // with correspondings titles, subtexts, and backgroundcolors
@@ -49,11 +50,10 @@ public class Board {
     }
 
     //Set the gui fields titles and subtext to the same as the field[]'s.
-    public void setFieldTexts(Field[] fields, GUI_Field[] gui_fields){
-        for (int i = 0; i < fields.length; i++) {
-            gui_fields[i].setTitle(fields[i].getName());
-            gui_fields[i].setSubText(fields[i].getSubtext());
-
+    public void setFieldTexts(ArrayList<Field> fields, GUI_Field[] gui_fields){
+        for (int i = 0; i < fields.size(); i++) {
+            gui_fields[i].setTitle(fields.get(i).getName());
+            gui_fields[i].setSubText(fields.get(i).getSubtext());
         }
     }
 
@@ -64,6 +64,7 @@ public class Board {
     public String getPlayerName(String playerAndNumber){
         return gui.getUserString(playerAndNumber + " please type in your name");
     }
+
     public int setPlayerAmount(){
         //playerAmount = gui.getUserInteger("How many players?");
          int playerAmount = Integer.valueOf(gui.getUserSelection("how many players?", "2", "3", "4"));

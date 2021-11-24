@@ -5,6 +5,8 @@ public class PlayerController {
     private ArrayList<Player> players;
     private Player currentPlayer;
     private  int currentPlayerNum;
+    private int playerAmount;
+    private int maxPlayers = 4;
 
     public PlayerController()
     {
@@ -26,6 +28,16 @@ public class PlayerController {
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
+    }
+
+    public ArrayList<Player> CreatePLayers(Board board)
+    {
+        playerAmount = board.setPlayerAmount();
+        for (int i = 1; i < playerAmount; i++) {
+            Player newPlayer = new Player(board.getPlayerName("player " + i));
+            players.add((newPlayer));
+        }
+        return players;
     }
 
     public void setCurrentPlayer() {
