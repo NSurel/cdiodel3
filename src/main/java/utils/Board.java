@@ -13,7 +13,7 @@ public class Board {
     // change order of methods, to make more sense and make it more readable.
     // Change methods to be ready for controllers input to the GUI
     private GUI gui;
-    private GUI_Field[] fields;
+    private GUI_Field[] gui_fields;
     private int playerCount;
     GUI_Car car0 = new GUI_Car(Color.RED, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car1 = new GUI_Car(Color.BLUE, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
@@ -27,23 +27,34 @@ public class Board {
     GUI_Ownable[] fieldsOwned;
     GUI_Player[] players;
 
-    public Board(int size){
+    public Board(int size,Field[] fields){
         //todo
         // make a GUI_Field[] that matches the actual game one
         // with correspondings titles, subtexts, and backgroundcolors
-        fields = new GUI_Field[size];
+        gui_fields = new GUI_Field[size];
         Color color = new Color(74,204,84);
-        for (int i = 0; i < fields.length; i++) {
+        for (int i = 0; i < gui_fields.length; i++) {
             GUI_Street test = new GUI_Street();
-            fields[i] = test;
+            gui_fields[i] = test;
         }
+        setFieldTexts(fields,gui_fields);
         fieldsOwned = new GUI_Ownable[size];
         for (int i = 0; i < fieldsOwned.length; i++) {
-            fieldsOwned[i] = (GUI_Ownable) fields[i];
+            fieldsOwned[i] = (GUI_Ownable) gui_fields[i];
         }
-        fields[1].setBackGroundColor(Color.RED);
-        fields[2].setBackGroundColor(Color.RED);
-        gui = new GUI(fields,color);
+        gui_fields[1].setBackGroundColor(Color.RED);
+        gui_fields[2].setBackGroundColor(Color.RED);
+        gui = new GUI(gui_fields,color);
+
+    }
+
+    //Set the gui fields titles and subtext to the same as the field[]'s.
+    public void setFieldTexts(Field[] fields, GUI_Field[] gui_fields){
+        for (int i = 0; i < fields.length; i++) {
+            gui_fields[i].setTitle(fields[i].getName());
+            gui_fields[i].setSubText(fields[i].getSubtext());
+
+        }
     }
 
     public void message(String msg){
@@ -86,14 +97,14 @@ public class Board {
         maxplayers[3] = gui_player4;
         for (int i = 0; i < amount; i++) {
             gui.addPlayer(maxplayers[i]);
-            fields[0].setCar(maxplayers[i],true );
+            gui_fields[0].setCar(maxplayers[i],true );
         }
     }
     //todo
     // change to find the Player's location and not GUI_Player
     public int getLocation(GUI_Player player){
         int i = 0;
-        while(!fields[i].hasCar(player)){
+        while(!gui_fields[i].hasCar(player)){
             i++;
         }
         return i;
@@ -111,28 +122,33 @@ public class Board {
     }
     //todo
     // change this method, its unnecessary. Just move piece from current location to new location.
-    //
-    public void movePlayer(GUI_Player player,int spaces) throws InterruptedException {
+    public void movePlayer(Player player,GUI_Player gui_player,int spaces){
+        gui.setDie(spaces);
+        gui_fields[getLocation(gui_player)].setCar(gui_player, false);
+        gui_fields[player.getPos()].setCar(gui_player,true);
+        /*
         gui.setDie(spaces);
         int currentfield = getLocation(player);
         int steps = currentfield+spaces;
-        fields[currentfield].setCar(player,false);
+        gui_fields[currentfield].setCar(player,false);
         for (int i = currentfield; i <steps ; i++) {
-            fields[i].setCar(player,false);
+            gui_fields[i].setCar(player,false);
             Thread.sleep(500L);
             if(i==23){
-                fields[0].setCar(player,true);
+                gui_fields[0].setCar(player,true);
                 i = 0;
                 steps -= 24;
                 Thread.sleep(500L);
-                fields[i].setCar(player,false);
+                gui_fields[i].setCar(player,false);
                 Thread.sleep(500L);
-                fields[i+1].setCar(player,true);
+                gui_fields[i+1].setCar(player,true);
             }else {
-                fields[i + 1].setCar(player, true);
+                gui_fields[i + 1].setCar(player, true);
             }
             Thread.sleep(500L);
         }
+
+         */
     }
 
     public void setPlayers(int i){

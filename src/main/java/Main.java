@@ -2,7 +2,7 @@ import utils.*;
 
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         /*int curpla = 1;
 
         Board board = new Board(24);
@@ -32,15 +32,17 @@ public class Main {
 
 
     }
-    public static void turn(int player,Board board, Cup cup) throws InterruptedException {
-        board.movePlayer(board.getGui_player(player), cup.rollCup());
-        if (board.getOwned(board.getLocation(board.getGui_player(player)))){
+    //todo
+    // fix turn method to work with the other classes and not just the gui class
+    public static void turn(int playernum,Board board, Cup cup,Player player) {
+        board.movePlayer(player ,board.getGui_player(playernum), cup.rollCup());
+        if (board.getOwned(board.getLocation(board.getGui_player(playernum)))){
             board.message("Pay the court a fine or serve your sentence");
-            board.payFine(board.getGui_player(player));
+            board.payFine(board.getGui_player(playernum));
             //Some code that gives the possibility to buy the field.
         } else {
             board.message("you can buy this");
-            board.buyField(board.getGui_player(player));
+            board.buyField(board.getGui_player(playernum));
             //Some code to make the player pay the debt to the other player, or whatever action that happens.
         }
     }
