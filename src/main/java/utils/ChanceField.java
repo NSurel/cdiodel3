@@ -1,14 +1,12 @@
 package utils;
 
-public class Start extends Field{
-    private int fare;
-    public Start(String name, String subtext){
-        super(name, subtext,null, false);
-        fare = 2;
+public class ChanceField extends Field
+{
+    public ChanceField(String subtext, String owner, boolean isVisiting)
+    {
+        super("ChanceField", subtext,  owner, false);
     }
-    public int getFare(){
-        return this.fare;
-    }
+
 
     @Override
     public int getRent() {
@@ -22,6 +20,6 @@ public class Start extends Field{
 
     @Override
     public void landedOn(ChanceDeck chanceDeck, PlayerController playerController) {
-
+        chanceDeck.draw(playerController);
     }
 }

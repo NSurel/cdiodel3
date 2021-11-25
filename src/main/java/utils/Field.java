@@ -62,4 +62,8 @@ public abstract class Field {
 
     public abstract int getRent();
 
+    public abstract void landedOn();
+
+    public abstract void landedOn(ChanceDeck chanceDeck, PlayerController playerController);
+
 }

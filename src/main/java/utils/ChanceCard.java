@@ -64,7 +64,7 @@ public class ChanceCard {
 
 
      //Possible actions for the chance cards.
-    public void doActions()
+    public void doActions(PlayerController playerController, ChanceDeck deck)
     {
         for (Map.Entry<String,Integer> entry : this.actions.entrySet())
         {
@@ -73,16 +73,29 @@ public class ChanceCard {
 
             if(action.equals("Money"))
             {
-
+                playerController.getCurrentPlayer().updateWallet(value);
             }
-            if(action.equals("Take money")){}
-            if(action.equals("Escape jail")){}
+            if(action.equals("Birthday money"))
+            {
+                for (Player p : playerController.getAllPlayers()) {
+                    playerController.getCurrentPlayer().updateWallet(value);
+                    p.updateWallet(-value);
+                }
+            }
+            if(action.equals("Escape jail"))
+            {
+                playerController.getCurrentPlayer().setJail(true);
+            }
             if(action.equals("Move to place")){}
             if(action.equals("Move up to")){}
-            if(action.equals("Move")){}
-            if(action.equals("Draw")){}
+            if(action.equals("Move")) {}
             if(action.equals("Move to color")){}
             if(action.equals("Move to one of two colors")){}
+            if (action.equals("Move or draw")){}
+            if(action.equals("Draw"))
+            {
+                deck.draw(playerController);
+            }
             if(action.equals("Give card")){}
         }
     }
