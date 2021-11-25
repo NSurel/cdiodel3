@@ -8,7 +8,6 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        write("Start,Start,This is the start field");
         FieldController fieldController = new FieldController();
         Board board = new Board(24,fieldController.getFields());
         PlayerController playerController = new PlayerController();
@@ -30,15 +29,6 @@ public class Main {
         //
 
 
-
-    }
-    public static void write(String testToWrite) throws IOException {
-        String mitFilnavn = "Fields.txt";
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter(mitFilnavn));
-        writer.write(testToWrite); //skriver streng til filen
-        writer.newLine(); //skriver ny line til filen
-        writer.close();
 
     }
     //todo
