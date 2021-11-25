@@ -2,9 +2,9 @@ package utils;
 
 public class ChanceField extends Field
 {
-    public ChanceField(String subtext, String owner, boolean isVisiting)
+    public ChanceField(String title, String subtext)
     {
-        super("ChanceField", subtext,  owner, false);
+        super(title, subtext, "", false);
     }
 
 

@@ -16,7 +16,7 @@ public class Main {
         board.displayChancecard("test");
         playerController.CreatePLayers(board);
 
-        while (gaming(board,playerController)){
+        while (gaming(playerController)){
         turn(playerController,board,cup);
         }
 
@@ -45,10 +45,10 @@ public class Main {
         board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
         playerController.setCurrentPlayer();
     }
-    public static boolean gaming(Board board,PlayerController playerController){
+    public static boolean gaming(PlayerController playerController){
         boolean gaming = true;
-        for (int i = 1; i <playerController.getPlayerAmount()+1 ; i++) {
-            if (playerController.getCurrentPlayer().getAccount().getBalance()<=0){
+        for (int i = 1; i < playerController.getAllPlayers().size(); i++) {
+            if (playerController.getAllPlayers().get(i-1).getAccount().getBalance()<=0){
                 gaming = false;
             }
         }
