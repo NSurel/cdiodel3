@@ -42,8 +42,8 @@ public class Main {
         playerController.getCurrentPlayer().updatePos(playerController.getCurrentPlayer(), cup.rollCup());
         board.moveGui_Player(playerController.getCurrentPlayer() ,board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()), cup.getDie1().getFacevalue());
         board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setBalance(playerController.getCurrentPlayer().getAccount().getBalance());
+        board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
         playerController.setCurrentPlayer();
-        board.msg("test");
     }
     public static boolean gaming(Board board,PlayerController playerController){
         boolean gaming = true;
