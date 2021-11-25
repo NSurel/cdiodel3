@@ -22,7 +22,7 @@ public class FieldController {
             }
             if (line.startsWith("Jail"))
             {
-                Jail jail = new Jail(fieldName,true);
+                Jail jail = new Jail(fieldName,fieldTxt,true);
                 fields.add(jail);
             }
             if (line.startsWith("Property"))
