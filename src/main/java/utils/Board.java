@@ -13,6 +13,13 @@ public class Board {
     //todo
     // change order of methods, to make more sense and make it more readable.
     // Change methods to be ready for controllers input to the GUI
+    GUI_Car car0 = new GUI_Car(Color.RED, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
+    GUI_Car car1 = new GUI_Car(Color.BLUE, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
+    GUI_Car car2 = new GUI_Car(Color.PINK, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
+    GUI_Car car3 = new GUI_Car(Color.YELLOW, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
+    GUI_Car[] cars = new GUI_Car[]{car0,car1,car2,car3};
+    private int carNumber = 0;
+    private ArrayList<GUI_Player> gui_Players = new ArrayList<>();
     private final GUI gui;
     private final GUI_Field[] gui_fields;
     GUI_Ownable[] fieldsOwned;
@@ -39,14 +46,24 @@ public class Board {
 
     }
 
+    public void msg (String msg){
+        gui.showMessage(msg);
+    }
+
+
+
     //Set the gui fields titles and subtext to the same as the field[]'s.
     public void setFieldTexts(ArrayList<Field> fields, GUI_Field[] gui_fields){
         for (int i = 0; i < fields.size(); i++) {
             gui_fields[i].setTitle(fields.get(i).getName());
-            gui_fields[i].setSubText(fields.get(i).getSubtext());
+            gui_fields[i].setDescription(fields.get(i).getSubtext());
+            gui_fields[i].setSubText(String.valueOf(fields.get(i).getRent()));
+            if (fields.get(i).getRent()==0)
+            {
+                gui_fields[i].setSubText("");
+            }
         }
     }
-
 
     public String getPlayerName(String playerAndNumber){
         return gui.getUserString(playerAndNumber + " please type in your name");
@@ -59,9 +76,12 @@ public class Board {
 
     public void addGuiPlayer(Player player)
     {
-        GUI_Player guiPlayer = new GUI_Player(player.getName(),35);
+
+        GUI_Player guiPlayer = new GUI_Player(player.getName(),35,cars[carNumber]);
         gui.addPlayer(guiPlayer);
         gui_fields[0].setCar(guiPlayer,true );
+        gui_Players.add(guiPlayer);
+        carNumber++;
     }
 
     //todo
@@ -84,7 +104,16 @@ public class Board {
 
     public GUI_Player getGui_player(int player){
 
-        return players[player-1];
+        return gui_Players.get(player-1);
+        //return players[player-1];
+    }
+
+    public void displayChancecard(String msg){
+        gui.displayChanceCard(msg);
+    }
+
+    public void updateOwner(int player, int fieldnum){
+        fieldsOwned[fieldnum].setBorder(getGui_player(player).getPrimaryColor());
     }
 
 

@@ -12,9 +12,11 @@ public class Main {
         Board board = new Board(24,fieldController.getFields());
         PlayerController playerController = new PlayerController();
         Cup cup = new Cup(6);
+        board.msg("The order of the players are the youngest first, and the oldest last");
+        board.displayChancecard("test");
         playerController.CreatePLayers(board);
 
-        while (gaming(board)){
+        while (gaming(playerController)){
         turn(playerController,board,cup);
         }
 
@@ -37,22 +39,16 @@ public class Main {
     //todo
     // fix turn method to work with the other classes and not just the gui class
     public static void turn(PlayerController playerController,Board board, Cup cup) {
-        board.movePlayer(playerController.getCurrentPlayer() ,board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()), cup.rollCup());
-        if (board.getOwned(board.getLocation(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum())))){
-            board.message("Pay the court a fine or serve your sentence");
-            board.payFine(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()));
-            //Some code that gives the possibility to buy the field.
-        } else {
-            board.message("you can buy this");
-            board.buyField(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()));
-            //Some code to make the player pay the debt to the other player, or whatever action that happens.
-        }
+        playerController.getCurrentPlayer().updatePos(playerController.getCurrentPlayer(), cup.rollCup());
+        board.moveGui_Player(playerController.getCurrentPlayer() ,board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()), cup.getDie1().getFacevalue());
+        board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setBalance(playerController.getCurrentPlayer().getAccount().getBalance());
+        board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
         playerController.setCurrentPlayer();
     }
-    public static boolean gaming(Board board){
+    public static boolean gaming(PlayerController playerController){
         boolean gaming = true;
-        for (int i = 1; i < board.getPlayerCount()+1; i++) {
-            if (board.getGui_player(i).getBalance()<=0){
+        for (int i = 1; i < playerController.getAllPlayers().size(); i++) {
+            if (playerController.getAllPlayers().get(i-1).getAccount().getBalance()<=0){
                 gaming = false;
             }
         }

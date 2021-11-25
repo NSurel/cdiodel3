@@ -31,6 +31,11 @@ public class FieldController {
                 Property newProperty = new Property(fieldName,fieldTxt,propertyRent,"");
                 fields.add(newProperty);
             }
+            if (line.startsWith("ChanceCard"))
+            {
+                ChanceField chanceField = new ChanceField(fieldName ,fieldTxt);
+                fields.add(chanceField);
+            }
         }
         s.close();
     }

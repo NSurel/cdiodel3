@@ -34,7 +34,7 @@ public class PlayerController {
     public ArrayList<Player> CreatePLayers(Board board)
     {
         playerAmount = board.setPlayerAmount();
-        for (int i = 1; i <= playerAmount; i++) {
+        for (int i = 1; i < playerAmount+1; i++) {
             Player newPlayer = new Player(board.getPlayerName("player " + i),i);
             players.add((newPlayer));
             board.addGuiPlayer(newPlayer);
@@ -49,7 +49,7 @@ public class PlayerController {
 
     public void setCurrentPlayer() {
         currentPlayerNum++;
-        if (currentPlayerNum >= players.size())
+        if (currentPlayerNum >= players.size()+1)
         {
             currentPlayerNum = 1;
         }
