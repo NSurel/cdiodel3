@@ -56,7 +56,12 @@ public class Board {
     public void setFieldTexts(ArrayList<Field> fields, GUI_Field[] gui_fields){
         for (int i = 0; i < fields.size(); i++) {
             gui_fields[i].setTitle(fields.get(i).getName());
-            gui_fields[i].setSubText(fields.get(i).getSubtext());
+            gui_fields[i].setDescription(fields.get(i).getSubtext());
+            gui_fields[i].setSubText(String.valueOf(fields.get(i).getRent()));
+            if (fields.get(i).getRent()==0)
+            {
+                gui_fields[i].setSubText("");
+            }
         }
     }
 
