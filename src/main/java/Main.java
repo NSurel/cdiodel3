@@ -1,8 +1,11 @@
 import utils.*;
 
+import java.io.IOException;
+
+
 public class Main {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         /*int curpla = 1;
 
         Board board = new Board(24);
@@ -20,10 +23,13 @@ public class Main {
             }
         }
         */
-        Field[] Hello = new Field[2];
-        Property hell02 = new Property("hell" ,"din mor", 2, "Din far");
-        Hello[0]= hell02;
-        System.out.println(Hello[0].getRent());
+        //test af fields initialize
+        /*FieldController Fields = new FieldController();
+        FieldController.initializeFields(Fields);
+        for (int i = 0; i < 24; i++) {
+            System.out.println(Fields.getFields()[i].getName());
+        }*/
+
         //TODO
         //  Make a method that instanciates the fields
         //   (start with the properties and jail)
