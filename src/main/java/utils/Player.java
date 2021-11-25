@@ -7,14 +7,16 @@ public class Player {
     private String name;
     private boolean jail;
     private boolean getoutofjailfreecard;
+    private int playerNum;
 
-    public Player(String Name){
+    public Player(String Name, int playerNum){
         this.pos = 0 ;
         this.account = new Account();
         this.win  = false;
         this.name = Name;
         this.jail = false;
         this.getoutofjailfreecard = false;
+        this.playerNum = playerNum;
 
     }
     public void updatePos(Player player, int poschange){
@@ -30,6 +32,9 @@ public class Player {
     }
     public int getPos() {
         return pos;
+    }
+    public int getPlayerNum() {
+        return playerNum;
     }
     public void updateWallet(int i){}
     public void setWin(boolean x) {

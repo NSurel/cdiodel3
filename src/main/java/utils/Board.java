@@ -86,6 +86,14 @@ public class Board {
             return true;
         }
     }
+
+    public void addGuiPlayer(Player player)
+    {
+        GUI_Player guiPlayer = new GUI_Player(player.getName(),35);
+        gui.addPlayer(guiPlayer);
+        gui_fields[0].setCar(guiPlayer,true );
+    }
+
     public void createPlayers(int amount)   {
         playerCount = amount;
         gui_player1 = new GUI_Player("Player1",35,car0);

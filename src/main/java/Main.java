@@ -14,6 +14,9 @@ public class Main {
         Cup cup = new Cup(6);
         playerController.CreatePLayers(board);
 
+        while (gaming(board)){
+        turn(playerController,board,cup);
+        }
 
         //board.createPlayers(board.setPlayerAmount());
         //board.setPlayers(board.getPlayerCount());
@@ -33,17 +36,18 @@ public class Main {
     }
     //todo
     // fix turn method to work with the other classes and not just the gui class
-    public static void turn(int playernum,Board board, Cup cup,Player player) {
-        board.movePlayer(player ,board.getGui_player(playernum), cup.rollCup());
-        if (board.getOwned(board.getLocation(board.getGui_player(playernum)))){
+    public static void turn(PlayerController playerController,Board board, Cup cup) {
+        board.movePlayer(playerController.getCurrentPlayer() ,board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()), cup.rollCup());
+        if (board.getOwned(board.getLocation(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum())))){
             board.message("Pay the court a fine or serve your sentence");
-            board.payFine(board.getGui_player(playernum));
+            board.payFine(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()));
             //Some code that gives the possibility to buy the field.
         } else {
             board.message("you can buy this");
-            board.buyField(board.getGui_player(playernum));
+            board.buyField(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()));
             //Some code to make the player pay the debt to the other player, or whatever action that happens.
         }
+        playerController.setCurrentPlayer();
     }
     public static boolean gaming(Board board){
         boolean gaming = true;

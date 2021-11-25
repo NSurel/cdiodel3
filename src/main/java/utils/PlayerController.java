@@ -35,8 +35,14 @@ public class PlayerController {
     {
         playerAmount = board.setPlayerAmount();
         for (int i = 1; i <= playerAmount; i++) {
-            Player newPlayer = new Player(board.getPlayerName("player " + i));
+            Player newPlayer = new Player(board.getPlayerName("player " + i),i);
             players.add((newPlayer));
+            board.addGuiPlayer(newPlayer);
+        }
+        for (Player p: players) {
+            if(p.getPlayerNum() == 1){
+                currentPlayer = p;
+            }
         }
         return players;
     }
@@ -46,6 +52,11 @@ public class PlayerController {
         if (currentPlayerNum >= players.size())
         {
             currentPlayerNum = 1;
+        }
+        for (Player p : players) {
+            if (p.getPlayerNum() == currentPlayerNum){
+                currentPlayer = p;
+            }
         }
     }
 
