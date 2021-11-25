@@ -86,12 +86,24 @@ public class ChanceCard {
             {
                 playerController.getCurrentPlayer().setJail(true);
             }
-            if(action.equals("Move to place")){}
-            if(action.equals("Move up to")){}
-            if(action.equals("Move")) {}
+            if(action.equals("Move to place"))
+            {
+                playerController.getCurrentPlayer().setPos(value);
+            }
+            if(action.equals("Move up to"))
+            {
+
+            }
+            if(action.equals("Move"))
+            {
+                playerController.getCurrentPlayer().setPos(playerController.getCurrentPlayer().getPos() + value);
+            }
             if(action.equals("Move to color")){}
             if(action.equals("Move to one of two colors")){}
-            if (action.equals("Move or draw")){}
+            if (action.equals("Move or draw"))
+            {
+
+            }
             if(action.equals("Draw"))
             {
                 deck.draw(playerController);

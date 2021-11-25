@@ -11,6 +11,7 @@ public class PlayerController {
     public PlayerController()
     {
         currentPlayerNum = 1;
+        players = new ArrayList<Player>();
     }
 
     public int getPlayerAmount(){
@@ -33,7 +34,7 @@ public class PlayerController {
     public ArrayList<Player> CreatePLayers(Board board)
     {
         playerAmount = board.setPlayerAmount();
-        for (int i = 1; i < playerAmount; i++) {
+        for (int i = 1; i <= playerAmount; i++) {
             Player newPlayer = new Player(board.getPlayerName("player " + i));
             players.add((newPlayer));
         }

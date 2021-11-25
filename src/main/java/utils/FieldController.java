@@ -28,7 +28,7 @@ public class FieldController {
             if (line.startsWith("Property"))
             {
                 int propertyRent = Integer.parseInt(line.split(",")[3]);
-                Property newProperty = new Property(fieldName,fieldTxt,propertyRent,null);
+                Property newProperty = new Property(fieldName,fieldTxt,propertyRent,"");
                 fields.add(newProperty);
             }
         }
