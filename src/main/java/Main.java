@@ -33,20 +33,21 @@ public class Main {
     //todo
     // fix turn method to work with the other classes and not just the gui class
     public static void turn(PlayerController playerController, FieldController fieldController,Board board, Cup cup, ChanceDeck chanceDeck) {
-        playerController.getCurrentPlayer().updatePos(playerController.getCurrentPlayer(), cup.rollCup());
+        playerController.getCurrentPlayer().updatePos(cup.rollCup());
         board.moveGui_Player(playerController.getCurrentPlayer() ,board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()), cup.getDie1().getFacevalue());
         board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setBalance(playerController.getCurrentPlayer().getAccount().getBalance());
         board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
 
         doFieldAction(fieldController, playerController, chanceDeck, board);
-        hasJailCard(playerController,board);
+        //hasJailCard(playerController,board);
         playerController.setCurrentPlayer();
     }
 
     private static void doFieldAction(FieldController fieldController, PlayerController playerController, ChanceDeck chanceDeck, Board board)
     {
         Field currentField = fieldController.getFields().get(playerController.getCurrentPlayer().getPos());
-        switch (currentField.getFieldType())
+        currentField.landedOn(chanceDeck, playerController, board);
+        /*switch (currentField.getFieldType())
         {
             case "Property":
                 Property currentProperty = (Property) currentField;
@@ -56,7 +57,7 @@ public class Main {
                 ChanceField currentChanceField = (ChanceField)currentField;
                 currentChanceField.landedOn(chanceDeck, playerController, board);
             break;
-        }
+        }*/
     }
 
     public static boolean gameOngoing(PlayerController playerController){
@@ -69,12 +70,12 @@ public class Main {
         return gaming;
     }
     //fix this, it is trash
-    public static void hasJailCard(PlayerController playerController, Board board){
+    /*public static void hasJailCard(PlayerController playerController, Board board){
         if (playerController.getCurrentPlayer().GetGetoutofjailfreecard()&&!board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName().equals(playerController.getCurrentPlayer().getName()+" *")){
             board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName() + " *");
         }
         if (!playerController.getCurrentPlayer().GetGetoutofjailfreecard()&&!board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName().equals(playerController.getCurrentPlayer().getName()+" *")){
             board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName());
         }
-    }
+    }*/
 }

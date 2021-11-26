@@ -92,19 +92,41 @@ public class ChanceCard {
             }
             if(action.equals("Move up to 5"))
             {
-                playerController.getCurrentPlayer().setPos(playerController.getCurrentPlayer().getPos() + board.askMoveUpto5());
+                playerController.getCurrentPlayer().updatePos(board.askMoveUpto5());
             }
             if(action.equals("Move"))
             {
-                playerController.getCurrentPlayer().setPos(playerController.getCurrentPlayer().getPos() + value);
+                playerController.getCurrentPlayer().updatePos(value);
             }
-            if(action.equals("Move to color")){}
-            if(action.equals("Move to one of two colors")){}
+            if(action.equals("Move to one of two colors"))
+            {
+                String answer = board.askMoveToColor(value);
+                switch (answer){
+                    case "Orange":
+                        playerController.getCurrentPlayer().setPos(10);
+                        break;
+                    case "Green":
+                        playerController.getCurrentPlayer().setPos(19);
+                        break;
+                    case "Pink":
+                        playerController.getCurrentPlayer().setPos(7);
+                        break;
+                    case "Dark Blue":
+                        playerController.getCurrentPlayer().setPos(22);
+                        break;
+                    case "Light Blue":
+                        playerController.getCurrentPlayer().setPos(4);
+                        break;
+                    case "Red":
+                        playerController.getCurrentPlayer().setPos(13);
+                        break;
+                }
+            }
             if (action.equals("Move or draw"))
             {
                 String answer = board.askMoveOrDraw();
                 if (answer == "Move"){
-                    playerController.getCurrentPlayer().setPos(playerController.getCurrentPlayer().getPos() + value);
+                    playerController.getCurrentPlayer().updatePos(value);
                 } else if (answer == "Draw"){
                     deck.draw(playerController, board);
                 }
@@ -113,7 +135,6 @@ public class ChanceCard {
             {
                 deck.draw(playerController, board);
             }
-            if(action.equals("Give card")){}
         }
     }
 

@@ -19,11 +19,11 @@ public class Player {
         this.playerNum = playerNum;
 
     }
-    public void updatePos(Player player, int poschange){
+    public void updatePos(int poschange){
         this.pos += poschange;
-        if(player.getPos() >= 24 ) {
-            this.pos = player.getPos() % 24;
-            player.updateWallet(2);
+        if(this.getPos() >= 24 ) {
+            this.pos = this.getPos() % 24;
+            this.updateWallet(2);
         }
 
     }

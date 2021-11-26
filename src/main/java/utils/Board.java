@@ -144,6 +144,17 @@ public class Board {
 
     public int askMoveUpto5() { return Integer.parseInt(gui.getUserSelection("How fare do you want to move?", "1","2","3","4","5"));}
 
+    public String askMoveToColor(int colorComp){
+        if (colorComp == 0){
+            return gui.getUserSelection("Move to Orange or Green?", "Orange", "Green");
+        } else if (colorComp == 1){
+            return gui.getUserSelection("Move to Pink or Dark Blue?", "Pink", "Dark Blue");
+        } else if (colorComp == 2) {
+            return gui.getUserSelection("Move to Light Blue or Red?", "Light Blue", "Red");
+        } else return "none";
+
+    }
+
     public void updateOwner(int player, int fieldnum){
         fieldsOwned[fieldnum].setBorder(getGui_player(player).getPrimaryColor());
     }

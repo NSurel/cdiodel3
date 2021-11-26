@@ -64,15 +64,15 @@ public class ChanceDeck {
 
         //Move to a specific color
         ChanceCard MoveToOrange = new ChanceCard("Move to an orange space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to color", 0);
+        MoveToOrange.addAction("Move to place", 13);
         chanceDeck.add(MoveToOrange);
 
         ChanceCard MoveToRed = new ChanceCard("Move to a red space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to color", 1);
+        MoveToOrange.addAction("Move to place", 1);
         chanceDeck.add(MoveToRed);
 
         ChanceCard MoveToLightBlue = new ChanceCard("Move to a light blue space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to color", 2);
+        MoveToOrange.addAction("Move to place", 16);
         chanceDeck.add(MoveToLightBlue);
 
         //Move to one of two colors
@@ -93,7 +93,7 @@ public class ChanceDeck {
         chanceDeck.add(MoveToBrownOrYellow);
 
         //Player cards
-        ChanceCard CarCard = new ChanceCard("Give this card to the car player and draw a card. On the car player's next turn, that player moves to any a vacant space and buys it. If there isn't any vacant field then buy one from another player.");
+        /*ChanceCard CarCard = new ChanceCard("Give this card to the car player and draw a card. On the car player's next turn, that player moves to any a vacant space and buys it. If there isn't any vacant field then buy one from another player.");
         CarCard.addAction("Give card", 0);
         CarCard.addAction("Draw",0 );
         chanceDeck.add(CarCard);
@@ -111,7 +111,7 @@ public class ChanceDeck {
         ChanceCard DogCard = new ChanceCard("Give this card to the dog player and draw a card. On the dog player's next turn, that player moves to any vacant space and buys it. If there isn't any vacant field then buy one from another player.");
         DogCard.addAction("Give card", 0);
         DogCard.addAction("Draw",0 );
-        chanceDeck.add(DogCard);
+        chanceDeck.add(DogCard);*/
     }
 
     //Method for shuffling the deck randomly.
