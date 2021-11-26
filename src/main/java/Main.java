@@ -45,23 +45,23 @@ public class Main {
         board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setBalance(playerController.getCurrentPlayer().getAccount().getBalance());
         board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
 
-        doFieldAction(fieldController, playerController, chanceDeck);
+        doFieldAction(fieldController, playerController, chanceDeck, board);
 
         playerController.setCurrentPlayer();
     }
 
-    private static void doFieldAction(FieldController fieldController, PlayerController playerController, ChanceDeck chanceDeck)
+    private static void doFieldAction(FieldController fieldController, PlayerController playerController, ChanceDeck chanceDeck, Board board)
     {
         Field currentField = fieldController.getFields().get(playerController.getCurrentPlayer().getPos());
         switch (currentField.getFieldType())
         {
             case "Property":
                 Property currentProperty = (Property) currentField;
-                currentProperty.landedOn(chanceDeck, playerController);
+                currentProperty.landedOn(chanceDeck, playerController, board);
             break;
             case "ChanceField":
                 ChanceField currentChanceField = (ChanceField)currentField;
-                currentChanceField.landedOn(chanceDeck, playerController);
+                currentChanceField.landedOn(chanceDeck, playerController, board);
             break;
         }
     }
