@@ -6,9 +6,9 @@ public class Jail extends Field {
     public Jail(String name, String subtext,  boolean isVisiting){
         super(name, subtext,  null, false);
     }
-    public void goToJail(Player player, Jail jail){
+    public void goToJail(Player player){
         //we need to make some method that moves a player
-        if (!jail.getVisiting()) {
+        if (!getVisiting()) {
             player.setJail(true);
         }
     }
@@ -43,6 +43,7 @@ public class Jail extends Field {
 
     @Override
     public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
+        goToJail(playerController.getCurrentPlayer());
     }
 
     @Override

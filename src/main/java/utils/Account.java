@@ -5,7 +5,7 @@ public class Account {
     private int balance;
 
     public Account() {
-        balance = 10;
+        balance = 35;
     }
     public String updateScore(int update){
         if(balance + update <= 0){
