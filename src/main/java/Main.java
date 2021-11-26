@@ -34,7 +34,8 @@ public class Main {
     // fix turn method to work with the other classes and not just the gui class
     public static void turn(PlayerController playerController, FieldController fieldController,Board board, Cup cup, ChanceDeck chanceDeck) {
         playerController.getCurrentPlayer().updatePos(cup.rollCup());
-        board.moveGui_Player(playerController.getCurrentPlayer() ,board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()), cup.getDie1().getFacevalue());
+        board.setDie(cup.getDie1().getFacevalue());
+        board.moveGui_Player(playerController.getCurrentPlayer());
         board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setBalance(playerController.getCurrentPlayer().getAccount().getBalance());
         board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
 

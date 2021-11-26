@@ -123,11 +123,13 @@ public class Board {
         return i;
     }
 
+    public void setDie(int facevalue){
+        gui.setDie(facevalue);
+    }
 
-    public void moveGui_Player(Player player,GUI_Player gui_player,int spaces){
-        gui.setDie(spaces);
-        gui_fields[getLocation(gui_player)].setCar(gui_player, false);
-        gui_fields[player.getPos()].setCar(gui_player,true);
+    public void moveGui_Player(Player player){
+        gui_fields[getLocation(getGui_player(player.getPlayerNum()))].setCar(getGui_player(player.getPlayerNum()), false);
+        gui_fields[player.getPos()].setCar(getGui_player(player.getPlayerNum()),true);
     }
 
     public GUI_Player getGui_player(int player){
