@@ -22,7 +22,8 @@ public class FieldController {
             }
             if (line.startsWith("Jail"))
             {
-                Jail jail = new Jail(fieldName,fieldTxt,true);
+                boolean visiting = Boolean.valueOf(line.split(",")[3]);
+                Jail jail = new Jail(fieldName,fieldTxt,visiting);
                 fields.add(jail);
             }
             if (line.startsWith("Property"))
