@@ -11,7 +11,7 @@ public class Main {
         ChanceDeck chanceDeck = new ChanceDeck();
         Cup cup = new Cup(6);
         board.msg("The order of the players are: the youngest first, and the oldest last");
-        playerController.CreatePLayers(board);
+        playerController.createPLayers(board);
 
         while (gameOngoing(playerController)){
         turn(playerController,fieldController,board,cup,chanceDeck);
