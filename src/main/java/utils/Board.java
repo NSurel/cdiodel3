@@ -65,7 +65,7 @@ public class Board {
             if (fields.get(i).getRent() == 0) {
                 gui_fields[i].setSubText("");
             }
-            if (fields.get(i).getFieldType() == "Property") {
+            if (fields.get(i).getFieldType().equals("Property")){
                 switch (fields.get(i).getColor()) {
                     case ("blue"):
                         gui_fields[i].setBackGroundColor(Color.blue);
@@ -109,7 +109,7 @@ public class Board {
     public void addGuiPlayer(Player player)
     {
 
-        GUI_Player guiPlayer = new GUI_Player(player.getName(),35,cars[carNumber]);
+        GUI_Player guiPlayer = new GUI_Player(player.getName(),player.getAccount().getBalance(),cars[carNumber]);
         gui.addPlayer(guiPlayer);
         gui_fields[0].setCar(guiPlayer,true );
         gui_Players.add(guiPlayer);
