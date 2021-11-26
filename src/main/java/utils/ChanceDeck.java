@@ -55,7 +55,7 @@ public class ChanceDeck {
 
         //Special move cards
         ChanceCard Move5 = new ChanceCard("You may move up to 5 spaces.");
-        Move5.addAction("Move up to", 0);
+        Move5.addAction("Move up to 5", 0);
         chanceDeck.add(Move5);
 
         ChanceCard MoveOrDraw = new ChanceCard("Move 1 space or draw a card.");
@@ -142,6 +142,6 @@ public class ChanceDeck {
         numberOfCardsDrawn++;
         ChanceCard drawnCard = chanceDeck.get(numberOfCardsDrawn);
         drawnCard.doActions(playerController, this, board);
-
+        board.displayChancecard(drawnCard.getString());
     }
 }

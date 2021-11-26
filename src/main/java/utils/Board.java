@@ -114,6 +114,8 @@ public class Board {
 
     public String askMoveOrDraw(){return gui.getUserSelection("Move or draw?","Move","Draw");}
 
+    public int askMoveUpto5() { return Integer.parseInt(gui.getUserSelection("How fare do you want to move?", "1","2","3","4","5"));}
+
     public void updateOwner(int player, int fieldnum){
         fieldsOwned[fieldnum].setBorder(getGui_player(player).getPrimaryColor());
     }

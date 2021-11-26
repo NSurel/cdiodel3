@@ -90,9 +90,9 @@ public class ChanceCard {
             {
                 playerController.getCurrentPlayer().setPos(value);
             }
-            if(action.equals("Move up to"))
+            if(action.equals("Move up to 5"))
             {
-
+                playerController.getCurrentPlayer().setPos(playerController.getCurrentPlayer().getPos() + board.askMoveUpto5());
             }
             if(action.equals("Move"))
             {
