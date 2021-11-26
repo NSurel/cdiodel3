@@ -11,13 +11,14 @@ public class Main {
         FieldController fieldController = new FieldController();
         Board board = new Board(24,fieldController.getFields());
         PlayerController playerController = new PlayerController();
+        ChanceDeck chanceDeck = new ChanceDeck();
         Cup cup = new Cup(6);
         board.msg("The order of the players are the youngest first, and the oldest last");
         board.displayChancecard("test");
         playerController.CreatePLayers(board);
 
         while (gaming(playerController)){
-        turn(playerController,board,cup);
+        turn(playerController,fieldController,board,cup,chanceDeck);
         }
 
         //board.createPlayers(board.setPlayerAmount());
@@ -38,13 +39,33 @@ public class Main {
     }
     //todo
     // fix turn method to work with the other classes and not just the gui class
-    public static void turn(PlayerController playerController,Board board, Cup cup) {
+    public static void turn(PlayerController playerController, FieldController fieldController,Board board, Cup cup, ChanceDeck chanceDeck) {
         playerController.getCurrentPlayer().updatePos(playerController.getCurrentPlayer(), cup.rollCup());
         board.moveGui_Player(playerController.getCurrentPlayer() ,board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()), cup.getDie1().getFacevalue());
         board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setBalance(playerController.getCurrentPlayer().getAccount().getBalance());
         board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
+
+        doFieldAction(fieldController, playerController, chanceDeck);
+
         playerController.setCurrentPlayer();
     }
+
+    private static void doFieldAction(FieldController fieldController, PlayerController playerController, ChanceDeck chanceDeck)
+    {
+        Field currentField = fieldController.getFields().get(playerController.getCurrentPlayer().getPos());
+        switch (currentField.getFieldType())
+        {
+            case "Property":
+                Property currentProperty = (Property) currentField;
+                currentProperty.landedOn(chanceDeck, playerController);
+            break;
+            case "ChanceField":
+                ChanceField currentChanceField = (ChanceField)currentField;
+                currentChanceField.landedOn(chanceDeck, playerController);
+            break;
+        }
+    }
+
     public static boolean gaming(PlayerController playerController){
         boolean gaming = true;
         for (int i = 1; i < playerController.getAllPlayers().size(); i++) {
@@ -54,5 +75,4 @@ public class Main {
         }
         return gaming;
     }
-
 }

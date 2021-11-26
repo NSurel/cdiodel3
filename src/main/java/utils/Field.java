@@ -13,7 +13,7 @@ public abstract class Field {
     /*
     The field owner references which player owns the field
      */
-    private String owner;
+    private Player owner;
     /*
     the field isbuyable sees if a Field can be bought by a player
     examples of Fields that can be bought is Properties
@@ -21,7 +21,7 @@ public abstract class Field {
      */
     private boolean isbuyable;
 
-    public Field(String name, String subtext, String owner, boolean isbuyable){
+    public Field(String name, String subtext, Player owner, boolean isbuyable){
         this.name = name;
         this. subtext = subtext;
         this.owner = owner;
@@ -44,11 +44,11 @@ public abstract class Field {
         this.name = name;
     }
 
-    public String getOwner() {
+    public Player getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Player owner) {
         this.owner = owner;
     }
 
@@ -59,6 +59,8 @@ public abstract class Field {
     public void setSubtext(String subtext) {
         this.subtext = subtext;
     }
+
+    public abstract String getFieldType();
 
     public abstract int getRent();
 

@@ -27,6 +27,11 @@ public class Jail extends Field {
     }
 
     @Override
+    public String getFieldType() {
+        return "Jail";
+    }
+
+    @Override
     public int getRent() {
         return 0;
     }

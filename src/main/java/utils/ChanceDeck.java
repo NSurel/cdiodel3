@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -12,6 +13,7 @@ public class ChanceDeck {
     public ChanceDeck()
     {
         numberOfCardsDrawn = 0;
+        chanceDeck = new ArrayList<ChanceCard>();
         PopulateDeck();
         shuffle();
     }

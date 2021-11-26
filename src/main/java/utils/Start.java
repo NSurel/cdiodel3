@@ -11,6 +11,11 @@ public class Start extends Field{
     }
 
     @Override
+    public String getFieldType() {
+        return "Start";
+    }
+
+    @Override
     public int getRent() {
         return 0;
     }

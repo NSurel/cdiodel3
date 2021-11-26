@@ -36,7 +36,10 @@ public class Player {
     public int getPlayerNum() {
         return playerNum;
     }
-    public void updateWallet(int i){}
+    public void updateWallet(int i)
+    {
+        account.updateScore(i);
+    }
     public void setWin(boolean x) {
         win = x;
     }

@@ -4,9 +4,14 @@ public class ChanceField extends Field
 {
     public ChanceField(String title, String subtext)
     {
-        super(title, subtext, "", false);
+        super(title, subtext, null, false);
     }
 
+
+    @Override
+    public String getFieldType() {
+        return "ChanceField";
+    }
 
     @Override
     public int getRent() {
