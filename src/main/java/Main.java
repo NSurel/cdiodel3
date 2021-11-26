@@ -1,8 +1,5 @@
 import utils.*;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class Main {
@@ -13,17 +10,13 @@ public class Main {
         PlayerController playerController = new PlayerController();
         ChanceDeck chanceDeck = new ChanceDeck();
         Cup cup = new Cup(6);
-        board.msg("The order of the players are the youngest first, and the oldest last");
-        board.displayChancecard("test");
+        board.msg("The order of the players are: the youngest first, and the oldest last");
         playerController.CreatePLayers(board);
 
-        while (gaming(playerController)){
+        while (gameOngoing(playerController)){
         turn(playerController,fieldController,board,cup,chanceDeck);
         }
 
-        //board.createPlayers(board.setPlayerAmount());
-        //board.setPlayers(board.getPlayerCount());
-        //board.setNames(board.getPlayerCount());
 
         /*Field[] Hello = new Field[2];
         Property hell02 = new Property("hell" ,"din mor", 2, "Din far");
@@ -46,7 +39,7 @@ public class Main {
         board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
 
         doFieldAction(fieldController, playerController, chanceDeck, board);
-
+        hasJailCard(playerController,board);
         playerController.setCurrentPlayer();
     }
 
@@ -66,7 +59,7 @@ public class Main {
         }
     }
 
-    public static boolean gaming(PlayerController playerController){
+    public static boolean gameOngoing(PlayerController playerController){
         boolean gaming = true;
         for (int i = 1; i < playerController.getAllPlayers().size(); i++) {
             if (playerController.getAllPlayers().get(i-1).getAccount().getBalance()<=0){
@@ -74,5 +67,13 @@ public class Main {
             }
         }
         return gaming;
+    }
+    public static void hasJailCard(PlayerController playerController, Board board){
+        if (playerController.getCurrentPlayer().GetGetoutofjailfreecard()&&!board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName().equals(playerController.getCurrentPlayer().getName()+" *")){
+            board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName() + " *");
+        }
+        if (!playerController.getCurrentPlayer().GetGetoutofjailfreecard()&&!board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName().equals(playerController.getCurrentPlayer().getName()+" *")){
+            board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName());
+        }
     }
 }
