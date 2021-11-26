@@ -41,6 +41,7 @@ public class Main {
 
         doFieldAction(fieldController, playerController, chanceDeck, board);
         //hasJailCard(playerController,board);
+        updateOwners(fieldController,board);
         board.msg("It is now " + playerController.getCurrentPlayer().getName() +"'s turn");
         playerController.setCurrentPlayer();
 
@@ -81,4 +82,13 @@ public class Main {
             board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName());
         }
     }*/
+    public static void updateOwners(FieldController fieldController, Board board){
+        for (int i = 0; i <fieldController.getFields().size() ; i++) {
+            if (fieldController.getFields().get(i).getFieldType().equals("Property")&&fieldController.getFields().get(i).getOwner()!=null){
+                board.getownableFields()[i].setOwnerName(fieldController.getFields().get(i).getOwner().getName());
+                board.getownableFields()[i].setBorder(board.getGui_player(fieldController.getFields().get(i).getOwner().getPlayerNum()).getPrimaryColor());
+            }
+
+        }
+    }
 }
