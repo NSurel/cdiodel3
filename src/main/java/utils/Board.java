@@ -138,6 +138,8 @@ public class Board {
         //return players[player-1];
     }
 
+    public void rollMsg(){gui.getUserButtonPressed("Roll the die","Roll");}
+
     public void displayChancecard(String msg){
         gui.displayChanceCard(msg);
     }

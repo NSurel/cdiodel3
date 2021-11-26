@@ -88,37 +88,37 @@ public class ChanceCard {
             }
             if(action.equals("Move to place"))
             {
-                playerController.getCurrentPlayer().setPos(value);
+                playerController.getCurrentPlayer().setPos(value, board);
             }
             if(action.equals("Move up to 5"))
             {
-                playerController.getCurrentPlayer().updatePos(board.askMoveUpto5());
+                playerController.getCurrentPlayer().updatePos(board.askMoveUpto5(),board);
             }
             if(action.equals("Move"))
             {
-                playerController.getCurrentPlayer().updatePos(value);
+                playerController.getCurrentPlayer().updatePos(value, board);
             }
             if(action.equals("Move to one of two colors"))
             {
                 String answer = board.askMoveToColor(value);
                 switch (answer){
                     case "Orange":
-                        playerController.getCurrentPlayer().setPos(10);
+                        playerController.getCurrentPlayer().setPos(10, board);
                         break;
                     case "Green":
-                        playerController.getCurrentPlayer().setPos(19);
+                        playerController.getCurrentPlayer().setPos(19, board);
                         break;
                     case "Pink":
-                        playerController.getCurrentPlayer().setPos(7);
+                        playerController.getCurrentPlayer().setPos(7, board);
                         break;
                     case "Dark Blue":
-                        playerController.getCurrentPlayer().setPos(22);
+                        playerController.getCurrentPlayer().setPos(22, board);
                         break;
                     case "Light Blue":
-                        playerController.getCurrentPlayer().setPos(4);
+                        playerController.getCurrentPlayer().setPos(4, board);
                         break;
                     case "Red":
-                        playerController.getCurrentPlayer().setPos(13);
+                        playerController.getCurrentPlayer().setPos(13, board);
                         break;
                 }
             }
@@ -126,7 +126,7 @@ public class ChanceCard {
             {
                 String answer = board.askMoveOrDraw();
                 if (answer == "Move"){
-                    playerController.getCurrentPlayer().updatePos(value);
+                    playerController.getCurrentPlayer().updatePos(value,board);
                 } else if (answer == "Draw"){
                     deck.draw(playerController, board);
                 }

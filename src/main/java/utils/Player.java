@@ -19,16 +19,17 @@ public class Player {
         this.playerNum = playerNum;
 
     }
-    public void updatePos(int poschange){
+    public void updatePos(int poschange, Board board){
         this.pos += poschange;
         if(this.getPos() >= 24 ) {
             this.pos = this.getPos() % 24;
             this.updateWallet(2);
         }
-
+        board.moveGui_Player(this);
     }
-    public void setPos(int pos){
+    public void setPos(int pos,Board board){
         this.pos = pos;
+        board.moveGui_Player(this);
     }
     public int getPos() {
         return pos;
@@ -36,10 +37,7 @@ public class Player {
     public int getPlayerNum() {
         return playerNum;
     }
-    public void updateWallet(int i)
-    {
-        account.updateScore(i);
-    }
+    public void updateWallet(int i) { account.updateScore(i);}
     public void setWin(boolean x) {
         win = x;
     }
