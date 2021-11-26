@@ -1,0 +1,24 @@
+Start,Start,This is the start field
+Property,Burger joint,1dd,1,brown
+Property,Pizzaria,1dd,1,brown
+ChanceField,Chancefield,If you land here you draw a chancecard
+Property,Candy store,1dd,1,lightblue
+Property,Ice cream parlour,1dd,1,lightblue
+Jail,Jail,This is the jail if you're visiting don't worry,true
+Property,Museum,2dd,2,pink
+Property,Library,2dd,2,pink
+ChanceField,Chancefield,If you land here you draw a chancecard
+Property,Skate park,2dd,2,orange
+Property,Swimming pool,2dd,2,orange
+Jail,Free parking,You can stay here for free,false
+Property,Arcade,3dd,3,red
+Property,Cinema,3dd,3,red
+ChanceField,Chancefield,If you land here you draw a chancecard
+Property,Toy store,3dd,3,yellow
+Property,Pet store,3dd,3,yellow
+Jail,Go to jail,Go to jail,Unlucky you go to jail,true
+Property,Bowling alley,4dd,4,green
+Property,Zoo,4dd,4,green
+ChanceField,Chancefield,If you land here you draw a chancecard
+Property,Water park,4dd,4,blue
+Property,Boardwalk,4dd,4,blue

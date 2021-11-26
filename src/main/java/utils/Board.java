@@ -3,187 +3,158 @@ package utils;
 import gui_fields.*;
 import gui_main.GUI;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Board {
-    private GUI gui;
-    private GUI_Field[] fields;
-    private int bruh;
     GUI_Car car0 = new GUI_Car(Color.RED, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car1 = new GUI_Car(Color.BLUE, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car2 = new GUI_Car(Color.PINK, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car3 = new GUI_Car(Color.YELLOW, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
-    GUI_Player gui_player1; GUI_Player gui_player2; GUI_Player gui_player3; GUI_Player gui_player4;
-    GUI_Player[] maxplayers = new GUI_Player[4];
+    GUI_Car[] cars = new GUI_Car[]{car0,car1,car2,car3};
+    private int carNumber = 0;
+    private ArrayList<GUI_Player> gui_Players = new ArrayList<>();
+    private final GUI gui;
+    private final GUI_Field[] gui_fields;
     GUI_Ownable[] fieldsOwned;
-    GUI_Player[] players;
 
-    public Board(int size){
-        fields = new GUI_Field[size];
+    public Board(int size, ArrayList<Field> fields){
+        gui_fields = new GUI_Field[size];
         Color color = new Color(74,204,84);
-        for (int i = 0; i < fields.length; i++) {
+        for (int i = 0; i < gui_fields.length; i++) {
             GUI_Street test = new GUI_Street();
-            fields[i] = test;
-            fields[i].setTitle(String.valueOf(i));
+            gui_fields[i] = test;
         }
-        Player player1 = new Player("player1");
+        setFieldTextsAndColor(fields,gui_fields);
         fieldsOwned = new GUI_Ownable[size];
         for (int i = 0; i < fieldsOwned.length; i++) {
-            fieldsOwned[i] = (GUI_Ownable) fields[i];
+            fieldsOwned[i] = (GUI_Ownable) gui_fields[i];
         }
-        fields[1].setBackGroundColor(Color.RED);
-        fields[2].setBackGroundColor(Color.RED);
-        gui = new GUI(fields,color);
-
+        gui = new GUI(gui_fields,color);
     }
 
-    public void message(String msg){
+    public GUI_Field[] getGui_fields(){
+        return gui_fields;
+    }
+    public GUI_Ownable[] getownableFields(){
+        return fieldsOwned;
+    }
+
+    public void msg (String msg){
         gui.showMessage(msg);
     }
+
+    //Set the gui fields titles and subtext to the same as the field[]'s.
+    public void setFieldTextsAndColor(ArrayList<Field> fields, GUI_Field[] gui_fields){
+        Color lightblue = new Color(173,216,230);
+        Color orange = new Color(255,165,0);
+        Color brown = new Color(150,75,0);
+        for (int i = 0; i < fields.size(); i++) {
+            gui_fields[i].setTitle(fields.get(i).getName());
+            gui_fields[i].setDescription(fields.get(i).getSubtext());
+            gui_fields[i].setSubText(String.valueOf(fields.get(i).getRent()));
+            if (fields.get(i).getRent() == 0) {
+                gui_fields[i].setSubText("");
+            }
+            if (fields.get(i).getFieldType().equals("Property")){
+                switch (fields.get(i).getColor()) {
+                    case ("blue"):
+                        gui_fields[i].setBackGroundColor(Color.blue);
+                        break;
+                    case ("brown"):
+                        gui_fields[i].setBackGroundColor(brown);
+                        break;
+                    case ("lightblue"):
+                        gui_fields[i].setBackGroundColor(lightblue);
+                        break;
+                    case ("pink"):
+                        gui_fields[i].setBackGroundColor(Color.pink);
+                        break;
+                    case ("orange"):
+                        gui_fields[i].setBackGroundColor(orange);
+                        break;
+                    case ("red"):
+                        gui_fields[i].setBackGroundColor(Color.red);
+                        break;
+                    case ("yellow"):
+                        gui_fields[i].setBackGroundColor(Color.yellow);
+                        break;
+                    case ("green"):
+                        gui_fields[i].setBackGroundColor(Color.green);
+                        break;
+                    default:
+                        gui_fields[i].setBackGroundColor(Color.gray);
+                }
+            }
+        }
+    }
+
     public String getPlayerName(String playerAndNumber){
         return gui.getUserString(playerAndNumber + " please type in your name");
     }
+
     public int setPlayerAmount(){
-        //playerAmount = gui.getUserInteger("How many players?");
-         int playerAmount = Integer.valueOf(gui.getUserSelection("how many players?", "2", "3", "4"));
-        return playerAmount;
+        return Integer.valueOf(gui.getUserSelection("how many players?", "2", "3", "4"));
     }
-    public void setOwner(GUI_Player player, int i){
-        //GUI_Ownable o;
-        //o = (GUI_Ownable) fields[i];
-        //o.setBorder(player.getPrimaryColor());
-        fieldsOwned[i].setBorder(player.getPrimaryColor());
-        fieldsOwned[i].setOwnerName(player.getName());
+    //add a gui player corresponding to the player from the Player class
+    public void addGuiPlayer(Player player)
+    {
+        GUI_Player guiPlayer = new GUI_Player(player.getName(),player.getAccount().getBalance(),cars[carNumber]);
+        gui.addPlayer(guiPlayer);
+        gui_fields[0].setCar(guiPlayer,true );
+        gui_Players.add(guiPlayer);
+        carNumber++;
     }
 
-    public boolean getOwned(int i){
-        if (fieldsOwned[i].getOwnerName()==null){
-            return false;
-        } else{
-            return true;
-        }
-    }
-    public void createPlayers(int amount)   {
-        bruh = amount;
-        gui_player1 = new GUI_Player("Player1",35,car0);
-        gui_player2 = new GUI_Player("Player2",35,car1);
-        gui_player3 = new GUI_Player("Player3",35,car2);
-        gui_player4 = new GUI_Player("Player4",35,car3);
-        maxplayers[0] = gui_player1;
-        maxplayers[1] = gui_player2;
-        maxplayers[2] = gui_player3;
-        maxplayers[3] = gui_player4;
-        for (int i = 0; i < amount; i++) {
-            gui.addPlayer(maxplayers[i]);
-            fields[0].setCar(maxplayers[i],true );
-        }
-    }
-    public int boardLength(){
-        return fields.length;
-    }
-    public void setCar(int field, GUI_Player player){
-        fields[field].setCar(player, true);
-    }
-    public void removeCar(int field, GUI_Player player){
-        fields[field].setCar(player, false);
-    }
     public int getLocation(GUI_Player player){
         int i = 0;
-        while(!fields[i].hasCar(player)){
+        while(!gui_fields[i].hasCar(player)){
             i++;
         }
         return i;
     }
-    public int getBruh(){
-        return bruh;
-    }
-    public void setNames(int amount){
-        for (int i = 1; i < amount+1; i++) {
-            players[i-1].setName(getPlayerName("player "+i));
-        }
-        /*
-        switch (amount){
-            case 2:
-                gui_player1.setName(getPlayerName("player 1"));
-                gui_player2.setName(getPlayerName("player 2"));
-                break;
-            case 3:
-                gui_player1.setName(getPlayerName("player 1"));
-                gui_player2.setName(getPlayerName("player 2"));
-                gui_player3.setName(getPlayerName("player 3"));
-                break;
-            case 4:
-                gui_player1.setName(getPlayerName("player 1"));
-                gui_player2.setName(getPlayerName("player 2"));
-                gui_player3.setName(getPlayerName("player 3"));
-                gui_player4.setName(getPlayerName("player 4"));
-                break;
-        }
 
-         */
+    public void setDie(int facevalue){
+        gui.setDie(facevalue);
     }
-    public void movePlayer(GUI_Player player,int spaces) throws InterruptedException {
-        int currentfield = getLocation(player);
-        int steps = currentfield+spaces;
-        fields[currentfield].setCar(player,false);
-        for (int i = currentfield; i <steps ; i++) {
-            fields[i].setCar(player,false);
-            Thread.sleep(500L);
-            if(i==23){
-                fields[0].setCar(player,true);
-                i = 0;
-                steps -= 24;
-                Thread.sleep(500L);
-                fields[i].setCar(player,false);
-                Thread.sleep(500L);
-                fields[i+1].setCar(player,true);
-            }else {
-                fields[i + 1].setCar(player, true);
-            }
-            Thread.sleep(500L);
-        }
+    //Moves the gui player from the players old position to its new
+    public void moveGui_Player(Player player){
+        gui_fields[getLocation(getGui_player(player.getPlayerNum()))].setCar(getGui_player(player.getPlayerNum()), false);
+        gui_fields[player.getPos()].setCar(getGui_player(player.getPlayerNum()),true);
     }
-    public void setDice(int dice1, int dice2){
-        gui.setDice(dice1,9,2,dice2,10,2);
-    }
-    public void setPlayers(int i){
-        players = new GUI_Player[i];
-        for (int j = 0; j < i; j++) {
-            players[j] = maxplayers[j];
-        }
-    }
+
     public GUI_Player getGui_player(int player){
 
-        return players[player-1];
+        return gui_Players.get(player-1);
+        //return players[player-1];
     }
-    public void buyField(GUI_Player player){
-        //String userInput = gui.getUserSelection("Do you want to buy this field?","Yes","No");
-        if (player.getBalance()>=3){
-                setOwner(player,getLocation(player));
-                player.setBalance(player.getBalance()-3);
-                message("You are now the proud owner of this field");
-        }else {
-            message("You don't have the funds to buy this. Damn you're poor");
-        }
-    }
-    public GUI_Player findOwner(int i){
-        int owner = 0;
-        for (int j = 0; j < getBruh(); j++) {
 
-            if(fieldsOwned[i].getOwnerName().equals(players[j].getName())){
-                owner = j;
-            }
+    public void rollMsg(String msg){gui.getUserButtonPressed(msg,"Roll");}
+
+    public void displayChancecard(String msg){
+        gui.displayChanceCard(msg);
+    }
+
+    public String askMoveOrDraw(){return gui.getUserSelection("Move or draw?","Move","Draw");}
+
+    public int askMoveUpto5() { return Integer.parseInt(gui.getUserSelection("How far do you want to move?", "1","2","3","4","5"));}
+
+    public String askMoveToColor(int colorComp){
+        if (colorComp == 0){
+            return gui.getUserSelection("Move to Orange or Green?", "Orange", "Green");
+        } else if (colorComp == 1){
+            return gui.getUserSelection("Move to Pink or Dark Blue?", "Pink", "Dark Blue");
+        } else if (colorComp == 2) {
+            return gui.getUserSelection("Move to Light Blue or Red?", "Light Blue", "Red");
+        } else if (colorComp == 3) {
+            return gui.getUserSelection("Move to Brown or Yellow?", "Brown", "Yellow");
+        } else return "none";
+
+    }
+    public void updateGuiPlayers(PlayerController playerController){
+        for (int i = 1; i < playerController.getPlayerAmount()+1; i++) {
+            getGui_player(i).setBalance(playerController.getAllPlayers().get(i-1).getAccount().getBalance());
+            moveGui_Player(playerController.getAllPlayers().get(i-1));
         }
-        return players[owner];
     }
-    public void payFine(GUI_Player unlucky){
-        if (!fieldsOwned[getLocation(unlucky)].getOwnerName().equals(unlucky.getName())){
-            findOwner(getLocation(unlucky)).setBalance(findOwner(getLocation(unlucky)).getBalance()+3);
-            unlucky.setBalance(unlucky.getBalance()-3);
-        }else{
-            message("You own this field");
-        }
-    }
-    public void setGuiBalance(Player player, GUI_Player guiplayer){
-        guiplayer.setBalance(player.getAccount().getBalance());
-    }
+
 }
