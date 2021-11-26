@@ -16,7 +16,7 @@ class ChanceDeckTest {
         FieldController fieldController = new FieldController();
         Board board = new Board(24,fieldController.getFields());
         PlayerController playerController = new PlayerController();
-        playerController.createPLayers(board);
+        playerController.createPlayers(board);
         for (int i = 0; i > 100; i++){
             testChanceDeck.draw(playerController,board);
         }

@@ -31,7 +31,7 @@ public class PlayerController {
         this.players = players;
     }
 
-    public ArrayList<Player> createPLayers(Board board)
+    public ArrayList<Player> createPlayers(Board board)
     {
         playerAmount = board.setPlayerAmount();
         for (int i = 1; i < playerAmount+1; i++) {
