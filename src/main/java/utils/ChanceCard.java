@@ -120,6 +120,11 @@ public class ChanceCard {
                     case "Red":
                         playerController.getCurrentPlayer().setPos(13, board);
                         break;
+                    case "Brown":
+                        playerController.getCurrentPlayer().setPos(1,board);
+                        break;
+                    case "Yellow":
+                        playerController.getCurrentPlayer().setPos(16,board);
                 }
             }
             if (action.equals("Move or draw"))

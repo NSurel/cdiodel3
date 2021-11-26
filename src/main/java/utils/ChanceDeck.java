@@ -40,17 +40,17 @@ public class ChanceDeck {
         chanceDeck.add(getoutofjailfreecard);
 
         //Move to a place cards
-        ChanceCard Go = new ChanceCard("Move to GO and collect 2 DD!");
+        ChanceCard Go = new ChanceCard("Move to START and collect 2 DD!");
         Go.addAction("Move to place", 0);
         Go.addAction("Money", 2);
         chanceDeck.add(Go);
 
         ChanceCard SkatePark = new ChanceCard("Move to the SKATE PARK and buy it if it is vacant. Otherwise, pay rent to the owner.");
-        SkatePark.addAction("Move to place", 0);
+        SkatePark.addAction("Move to place", 10);
         chanceDeck.add(SkatePark);
 
         ChanceCard Boardwalk = new ChanceCard("Move to the BOARDWALK.");
-        Boardwalk.addAction("Move to place", 0);
+        Boardwalk.addAction("Move to place", 23);
         chanceDeck.add(Boardwalk);
 
         //Special move cards
@@ -64,15 +64,15 @@ public class ChanceDeck {
 
         //Move to a specific color
         ChanceCard MoveToOrange = new ChanceCard("Move to an orange space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to place", 13);
+        MoveToOrange.addAction("Move to place", 10);
         chanceDeck.add(MoveToOrange);
 
         ChanceCard MoveToRed = new ChanceCard("Move to a red space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to place", 1);
+        MoveToOrange.addAction("Move to place", 13);
         chanceDeck.add(MoveToRed);
 
         ChanceCard MoveToLightBlue = new ChanceCard("Move to a light blue space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to place", 16);
+        MoveToOrange.addAction("Move to place", 4);
         chanceDeck.add(MoveToLightBlue);
 
         //Move to one of two colors

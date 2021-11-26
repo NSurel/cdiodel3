@@ -159,6 +159,8 @@ public class Board {
             return gui.getUserSelection("Move to Pink or Dark Blue?", "Pink", "Dark Blue");
         } else if (colorComp == 2) {
             return gui.getUserSelection("Move to Light Blue or Red?", "Light Blue", "Red");
+        } else if (colorComp == 3) {
+            return gui.getUserSelection("Move to Brown or Yellow?", "Brown", "Yellow");
         } else return "none";
 
     }
