@@ -40,8 +40,7 @@ public class Board {
         for (int i = 0; i < fieldsOwned.length; i++) {
             fieldsOwned[i] = (GUI_Ownable) gui_fields[i];
         }
-        gui_fields[1].setBackGroundColor(Color.RED);
-        gui_fields[2].setBackGroundColor(Color.RED);
+        colorFields();
         gui = new GUI(gui_fields,color);
 
     }
@@ -49,8 +48,6 @@ public class Board {
     public void msg (String msg){
         gui.showMessage(msg);
     }
-
-
 
     //Set the gui fields titles and subtext to the same as the field[]'s.
     public void setFieldTexts(ArrayList<Field> fields, GUI_Field[] gui_fields){
@@ -72,7 +69,6 @@ public class Board {
     public int setPlayerAmount(){
         return Integer.valueOf(gui.getUserSelection("how many players?", "2", "3", "4"));
     }
-
 
     public void addGuiPlayer(Player player)
     {
@@ -112,13 +108,36 @@ public class Board {
         gui.displayChanceCard(msg);
     }
 
+    public String askMoveOrDraw(){return gui.getUserSelection("Move or draw?","Move","Draw");}
+
+    public int askMoveUpto5() { return Integer.parseInt(gui.getUserSelection("How fare do you want to move?", "1","2","3","4","5"));}
+
     public void updateOwner(int player, int fieldnum){
         fieldsOwned[fieldnum].setBorder(getGui_player(player).getPrimaryColor());
+    }
+    //temp coloring of the gui_fields
+    public void colorFields(){
+        Color lightblue = new Color(173,216,230);
+        Color orange = new Color(255,165,0);
+        gui_fields[1].setBackGroundColor(Color.red);
+        gui_fields[2].setBackGroundColor(Color.red);
+        gui_fields[4].setBackGroundColor(Color.yellow);
+        gui_fields[5].setBackGroundColor(Color.yellow);
+        gui_fields[7].setBackGroundColor(Color.green);
+        gui_fields[8].setBackGroundColor(Color.green);
+        gui_fields[10].setBackGroundColor(Color.blue);
+        gui_fields[11].setBackGroundColor(Color.blue);
+        gui_fields[13].setBackGroundColor(Color.orange);
+        gui_fields[14].setBackGroundColor(Color.orange);
+        gui_fields[16].setBackGroundColor(lightblue);
+        gui_fields[17].setBackGroundColor(lightblue);
+        gui_fields[19].setBackGroundColor(Color.pink);
+        gui_fields[20].setBackGroundColor(Color.pink);
+        gui_fields[22].setBackGroundColor(orange);
+        gui_fields[23].setBackGroundColor(orange);
     }
 
 
     //todo
-    // display chancecard method that takes a string as input and shows the players
-    // update gui player score from the player's score
     // update fieldowner
 }

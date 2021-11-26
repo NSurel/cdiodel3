@@ -28,10 +28,10 @@ public class FieldController {
             if (line.startsWith("Property"))
             {
                 int propertyRent = Integer.parseInt(line.split(",")[3]);
-                Property newProperty = new Property(fieldName,fieldTxt,propertyRent,"");
+                Property newProperty = new Property(fieldName,fieldTxt,propertyRent,null);
                 fields.add(newProperty);
             }
-            if (line.startsWith("ChanceCard"))
+            if (line.startsWith("ChanceField"))
             {
                 ChanceField chanceField = new ChanceField(fieldName ,fieldTxt);
                 fields.add(chanceField);

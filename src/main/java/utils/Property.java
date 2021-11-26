@@ -7,13 +7,13 @@ public class Property extends Field{
     //waiting for GUI elements etc, idc what they wanna add.
     private  int rent;
 
-    public Property(String name, String subtext, int rent, String owner){
+    public Property(String name, String subtext, int rent, Player owner){
         super(name, subtext, owner, true);
         this.rent=rent;
     }
     // method for making a Player buy the field
     public void buyField(Player buyer){
-        setOwner(buyer.getName());
+        setOwner(buyer);
         setIsbuyable(false);
         buyer.updateWallet(-this.rent);
     }
@@ -26,6 +26,12 @@ public class Property extends Field{
                 array[i].setRent(this.rent*2);
             }
     }
+
+    @Override
+    public String getFieldType() {
+        return "Property";
+    }
+
     //get and set for rent
     @Override
     public int getRent() {
@@ -34,12 +40,16 @@ public class Property extends Field{
 
     @Override
     public void landedOn() {
-
     }
 
     @Override
-    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController) {
+    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
+        if(isIsbuyable()) {
+            buyField(playerController.getCurrentPlayer());
+            setIsbuyable(false);
+        } else {
 
+        }
     }
 
     public void setRent(int rent) {

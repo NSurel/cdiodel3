@@ -11,6 +11,11 @@ public class Start extends Field{
     }
 
     @Override
+    public String getFieldType() {
+        return "Start";
+    }
+
+    @Override
     public int getRent() {
         return 0;
     }
@@ -21,7 +26,7 @@ public class Start extends Field{
     }
 
     @Override
-    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController) {
+    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
 
     }
 }

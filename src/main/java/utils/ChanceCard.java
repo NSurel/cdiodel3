@@ -64,7 +64,7 @@ public class ChanceCard {
 
 
      //Possible actions for the chance cards.
-    public void doActions(PlayerController playerController, ChanceDeck deck)
+    public void doActions(PlayerController playerController, ChanceDeck deck, Board board)
     {
         for (Map.Entry<String,Integer> entry : this.actions.entrySet())
         {
@@ -90,9 +90,9 @@ public class ChanceCard {
             {
                 playerController.getCurrentPlayer().setPos(value);
             }
-            if(action.equals("Move up to"))
+            if(action.equals("Move up to 5"))
             {
-
+                playerController.getCurrentPlayer().setPos(playerController.getCurrentPlayer().getPos() + board.askMoveUpto5());
             }
             if(action.equals("Move"))
             {
@@ -102,11 +102,16 @@ public class ChanceCard {
             if(action.equals("Move to one of two colors")){}
             if (action.equals("Move or draw"))
             {
-
+                String answer = board.askMoveOrDraw();
+                if (answer == "Move"){
+                    playerController.getCurrentPlayer().setPos(playerController.getCurrentPlayer().getPos() + value);
+                } else if (answer == "Draw"){
+                    deck.draw(playerController, board);
+                }
             }
             if(action.equals("Draw"))
             {
-                deck.draw(playerController);
+                deck.draw(playerController, board);
             }
             if(action.equals("Give card")){}
         }

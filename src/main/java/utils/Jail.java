@@ -27,6 +27,11 @@ public class Jail extends Field {
     }
 
     @Override
+    public String getFieldType() {
+        return "Jail";
+    }
+
+    @Override
     public int getRent() {
         return 0;
     }
@@ -37,7 +42,7 @@ public class Jail extends Field {
     }
 
     @Override
-    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController) {
+    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
 
     }
 }
