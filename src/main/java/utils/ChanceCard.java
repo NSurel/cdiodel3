@@ -142,17 +142,4 @@ public class ChanceCard {
             }
         }
     }
-
-//If else statements for each action when "processing" the cards, used for later, needs to be a loop with a for each loop.
-   /*  if (action.equals("bank money")){
-        //update user's money with value
-    }else if (action.equals("birthday money")){
-        //update user's money with value*number of players
-    }else if (action.equals("move")){
-        //update user's position with value
-    }else if (action.equals("Escape jail")){
-        //give the user the getoutofjailfreecard
-    } else if (action.equals("...")){
-        //whatever
-    }*/
 }

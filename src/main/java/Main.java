@@ -18,12 +18,6 @@ public class Main {
 
         board.msg(findLosingPlayer(playerController, fieldController).getName() + " has gone bankrupt");
         board.msg(findWinningPlayer(playerController, fieldController).getName() + " is the winner of the game!!");
-        //TODO
-        // Make a method that instanciates the fields
-        //      (start with the properties and jail
-        //
-
-
 
     }
     public static void turn(PlayerController playerController, FieldController fieldController,Board board, Cup cup, ChanceDeck chanceDeck) {
@@ -45,17 +39,6 @@ public class Main {
     {
         Field currentField = fieldController.getFields().get(playerController.getCurrentPlayer().getPos());
         currentField.landedOn(chanceDeck, playerController, board);
-        /*switch (currentField.getFieldType())
-        {
-            case "Property":
-                Property currentProperty = (Property) currentField;
-                currentProperty.landedOn(chanceDeck, playerController, board);
-            break;
-            case "ChanceField":
-                ChanceField currentChanceField = (ChanceField)currentField;
-                currentChanceField.landedOn(chanceDeck, playerController, board);
-            break;
-        }*/
     }
 
     public static boolean gameOngoing(PlayerController playerController){
@@ -67,15 +50,7 @@ public class Main {
         }
         return gaming;
     }
-    //fix this, it is trash
-    /*public static void hasJailCard(PlayerController playerController, Board board){
-        if (playerController.getCurrentPlayer().GetGetoutofjailfreecard()&&!board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName().equals(playerController.getCurrentPlayer().getName()+" *")){
-            board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName() + " *");
-        }
-        if (!playerController.getCurrentPlayer().GetGetoutofjailfreecard()&&!board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName().equals(playerController.getCurrentPlayer().getName()+" *")){
-            board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName());
-        }
-    }*/
+
     public static void updateOwners(FieldController fieldController, Board board){
         for (int i = 0; i <fieldController.getFields().size() ; i++) {
             if (fieldController.getFields().get(i).getFieldType().equals("Property")&&fieldController.getFields().get(i).getOwner()!=null){

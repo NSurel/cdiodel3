@@ -1,10 +1,5 @@
 package utils;
 public class Property extends Field{
-
-//Very simple code, idk if you wanna use it. - Simon BS
-// Ty - MW
-
-    //waiting for GUI elements etc, idc what they wanna add.
     private  int rent;
     private String color;
 
@@ -18,15 +13,6 @@ public class Property extends Field{
         setOwner(buyer);
         setIsbuyable(false);
         buyer.updateWallet(-this.rent);
-    }
-    /* need something to check if the rent should be doubled. i.e.
-    a player owns 2 of the same type of amusemnet/property Loop through the array of fields? - MW
-     */
-    public void doubleRent(Property [] array) {
-        for (int i = 0; i < array.length-1; i++)
-            if (array[i].getOwner().equals(array[i+1].getOwner()) ) {
-                array[i].setRent(this.rent*2);
-            }
     }
 
     public void payRent(PlayerController playerController)
