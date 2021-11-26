@@ -5,6 +5,7 @@ public class Jail extends Field {
 
     public Jail(String name, String subtext,  boolean isVisiting){
         super(name, subtext,  null, false);
+        this.isVisiting = isVisiting;
     }
     public void goToJail(Player player){
         //we need to make some method that moves a player
