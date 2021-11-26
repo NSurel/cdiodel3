@@ -33,16 +33,17 @@ public class Main {
     //todo
     // fix turn method to work with the other classes and not just the gui class
     public static void turn(PlayerController playerController, FieldController fieldController,Board board, Cup cup, ChanceDeck chanceDeck) {
-        playerController.getCurrentPlayer().updatePos(cup.rollCup());
+        board.rollMsg();
+        playerController.getCurrentPlayer().updatePos(cup.rollCup(), board);
         board.setDie(cup.getDie1().getFacevalue());
-        board.moveGui_Player(playerController.getCurrentPlayer());
+        //board.moveGui_Player(playerController.getCurrentPlayer());
         board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setBalance(playerController.getCurrentPlayer().getAccount().getBalance());
-        board.msg(String.valueOf(playerController.getCurrentPlayer().getPlayerNum()));
 
         doFieldAction(fieldController, playerController, chanceDeck, board);
         //hasJailCard(playerController,board);
-        updateOwners(fieldController,board);
+        board.msg("It is now " + playerController.getCurrentPlayer().getName() +"'s turn");
         playerController.setCurrentPlayer();
+
     }
 
     private static void doFieldAction(FieldController fieldController, PlayerController playerController, ChanceDeck chanceDeck, Board board)
@@ -80,13 +81,4 @@ public class Main {
             board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName());
         }
     }*/
-    public static void updateOwners(FieldController fieldController, Board board){
-        for (int i = 0; i <fieldController.getFields().size() ; i++) {
-            if (fieldController.getFields().get(i).getFieldType().equals("Property")&&fieldController.getFields().get(i).getOwner()!=null){
-                board.getownableFields()[i].setOwnerName(fieldController.getFields().get(i).getOwner().getName());
-                board.getownableFields()[i].setBorder(board.getGui_player(fieldController.getFields().get(i).getOwner().getPlayerNum()).getPrimaryColor());
-            }
-
-        }
-    }
 }

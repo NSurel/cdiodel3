@@ -30,7 +30,7 @@ public class ChanceDeck {
         Homework.addAction("Money", 2);
         chanceDeck.add(Homework);
 
-        ChanceCard Birthday = new ChanceCard("It is your birthday! You receive 1 money from each other player");
+        ChanceCard Birthday = new ChanceCard("It is your birthday! You receive 1 DD from each other player");
         Birthday.addAction("Birthday money", 1);
         chanceDeck.add(Birthday);
 

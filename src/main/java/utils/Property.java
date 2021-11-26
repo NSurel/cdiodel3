@@ -29,6 +29,12 @@ public class Property extends Field{
             }
     }
 
+    public void payRent(PlayerController playerController)
+    {
+        playerController.getCurrentPlayer().updateWallet(-rent);
+        getOwner().updateWallet(rent);
+    }
+
     @Override
     public String getFieldType() {
         return "Property";
@@ -50,7 +56,7 @@ public class Property extends Field{
             buyField(playerController.getCurrentPlayer());
             setIsbuyable(false);
         } else {
-
+            payRent(playerController);
         }
     }
     public String getColor(){
