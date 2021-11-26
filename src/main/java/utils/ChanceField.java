@@ -24,7 +24,7 @@ public class ChanceField extends Field
     }
 
     @Override
-    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController) {
-        chanceDeck.draw(playerController);
+    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
+        chanceDeck.draw(playerController, board);
     }
 }

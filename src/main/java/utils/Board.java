@@ -112,6 +112,8 @@ public class Board {
         gui.displayChanceCard(msg);
     }
 
+    public String askMoveOrDraw(){return gui.getUserSelection("Move or draw?","Move","Draw");}
+
     public void updateOwner(int player, int fieldnum){
         fieldsOwned[fieldnum].setBorder(getGui_player(player).getPrimaryColor());
     }

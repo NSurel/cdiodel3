@@ -59,7 +59,7 @@ public class ChanceDeck {
         chanceDeck.add(Move5);
 
         ChanceCard MoveOrDraw = new ChanceCard("Move 1 space or draw a card.");
-        MoveOrDraw.addAction("Move or draw", 0);
+        MoveOrDraw.addAction("Move or draw", 1);
         chanceDeck.add(MoveOrDraw);
 
         //Move to a specific color
@@ -133,7 +133,7 @@ public class ChanceDeck {
     }
 
     //Method for drawing cards from the chance deck. If all cards (20) are drawn the deck is reshuflled.
-    public void draw(PlayerController playerController)
+    public void draw(PlayerController playerController, Board board)
     {
         if (numberOfCardsDrawn >= 20){
             shuffle();
@@ -141,7 +141,7 @@ public class ChanceDeck {
         }
         numberOfCardsDrawn++;
         ChanceCard drawnCard = chanceDeck.get(numberOfCardsDrawn);
-        drawnCard.doActions(playerController, this);
+        drawnCard.doActions(playerController, this, board);
 
     }
 }

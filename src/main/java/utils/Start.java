@@ -26,7 +26,7 @@ public class Start extends Field{
     }
 
     @Override
-    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController) {
+    public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
 
     }
 }
