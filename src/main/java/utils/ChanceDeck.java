@@ -135,13 +135,15 @@ public class ChanceDeck {
     //Method for drawing cards from the chance deck. If all cards (20) are drawn the deck is reshuflled.
     public void draw(PlayerController playerController, Board board)
     {
-        numberOfCardsDrawn++;
         if (numberOfCardsDrawn >= chanceDeck.size()){
             shuffle();
             numberOfCardsDrawn = 0;
         }
+        numberOfCardsDrawn++;
+
         ChanceCard drawnCard = chanceDeck.get(numberOfCardsDrawn-1);
         board.displayChancecard(drawnCard.getString());
+        board.msg("");
         drawnCard.doActions(playerController, this, board);
 
     }

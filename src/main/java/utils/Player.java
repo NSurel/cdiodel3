@@ -8,8 +8,9 @@ public class Player {
     private boolean jail;
     private boolean getoutofjailfreecard;
     private int playerNum;
+    private FieldController fieldController;
 
-    public Player(String Name, int playerNum){
+    public Player(String Name, int playerNum, FieldController fieldController){
         this.pos = 0 ;
         this.account = new Account();
         this.win  = false;
@@ -17,6 +18,7 @@ public class Player {
         this.jail = false;
         this.getoutofjailfreecard = false;
         this.playerNum = playerNum;
+        this.fieldController = fieldController;
 
     }
     public void updatePos(int poschange, Board board){
@@ -27,9 +29,14 @@ public class Player {
         }
         board.moveGui_Player(this);
     }
-    public void setPos(int pos,Board board){
+    public void setPos(int pos,Board board, ChanceDeck chanceDeck, PlayerController playerController){
+        if(pos < getPos()) {
+            this.updateWallet(2);
+        }
         this.pos = pos;
         board.moveGui_Player(this);
+        Field fieldLandedOn = fieldController.getFields().get(pos);
+        fieldLandedOn.landedOn(chanceDeck,playerController,board);
     }
     public int getPos() {
         return pos;

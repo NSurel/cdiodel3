@@ -88,7 +88,7 @@ public class ChanceCard {
             }
             if(action.equals("Move to place"))
             {
-                playerController.getCurrentPlayer().setPos(value, board);
+                playerController.getCurrentPlayer().setPos(value, board, deck, playerController);
             }
             if(action.equals("Move up to 5"))
             {
@@ -103,28 +103,28 @@ public class ChanceCard {
                 String answer = board.askMoveToColor(value);
                 switch (answer){
                     case "Orange":
-                        playerController.getCurrentPlayer().setPos(10, board);
+                        playerController.getCurrentPlayer().setPos(10, board, deck, playerController);
                         break;
                     case "Green":
-                        playerController.getCurrentPlayer().setPos(19, board);
+                        playerController.getCurrentPlayer().setPos(19, board, deck, playerController);
                         break;
                     case "Pink":
-                        playerController.getCurrentPlayer().setPos(7, board);
+                        playerController.getCurrentPlayer().setPos(7, board, deck, playerController);
                         break;
                     case "Dark Blue":
-                        playerController.getCurrentPlayer().setPos(22, board);
+                        playerController.getCurrentPlayer().setPos(22, board, deck, playerController);
                         break;
                     case "Light Blue":
-                        playerController.getCurrentPlayer().setPos(4, board);
+                        playerController.getCurrentPlayer().setPos(4, board, deck, playerController);
                         break;
                     case "Red":
-                        playerController.getCurrentPlayer().setPos(13, board);
+                        playerController.getCurrentPlayer().setPos(13, board, deck, playerController);
                         break;
                     case "Brown":
-                        playerController.getCurrentPlayer().setPos(1,board);
+                        playerController.getCurrentPlayer().setPos(1,board, deck, playerController);
                         break;
                     case "Yellow":
-                        playerController.getCurrentPlayer().setPos(16,board);
+                        playerController.getCurrentPlayer().setPos(16,board, deck, playerController);
                 }
             }
             if (action.equals("Move or draw"))

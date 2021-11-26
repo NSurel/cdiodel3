@@ -31,11 +31,11 @@ public class PlayerController {
         this.players = players;
     }
 
-    public ArrayList<Player> createPlayers(Board board)
+    public ArrayList<Player> createPlayers(Board board, FieldController fieldController)
     {
         playerAmount = board.setPlayerAmount();
         for (int i = 1; i < playerAmount+1; i++) {
-            Player newPlayer = new Player(board.getPlayerName("player " + i),i);
+            Player newPlayer = new Player(board.getPlayerName("player " + i),i,fieldController);
             players.add((newPlayer));
             board.addGuiPlayer(newPlayer);
         }

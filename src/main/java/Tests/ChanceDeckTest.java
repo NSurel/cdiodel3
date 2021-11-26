@@ -20,7 +20,7 @@ class ChanceDeckTest {
         FieldController fieldController = new FieldController();
         Board board = new Board(24,fieldController.getFields());
         PlayerController playerController = new PlayerController();
-        playerController.createPlayers(board);
+        playerController.createPlayers(board,fieldController);
         //The for loop draws one hundred cards from the deck.
         for (int i = 0; i > 100; i++){
             testChanceDeck.draw(playerController,board);
