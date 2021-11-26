@@ -28,7 +28,8 @@ public class FieldController {
             if (line.startsWith("Property"))
             {
                 int propertyRent = Integer.parseInt(line.split(",")[3]);
-                Property newProperty = new Property(fieldName,fieldTxt,propertyRent,null);
+                String color = line.split(",")[4];
+                Property newProperty = new Property(fieldName,fieldTxt,propertyRent,null,color);
                 fields.add(newProperty);
             }
             if (line.startsWith("ChanceField"))

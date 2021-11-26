@@ -1,24 +1,24 @@
 Start,Start,This is the start field
-Property,Field 1,3dd,3
-Property,Field 2,3dd,3
+Property,Field 1,1dd,1,brown
+Property,Field 2,1dd,1,brown
 ChanceField,Chancefield,If you land here you draw a chancecard
-Property,Field 3,3dd,3
-Property,Field 4,3dd,3
+Property,Field 3,1dd,1,lightblue
+Property,Field 4,1dd,1,lightblue
 Jail,jail,This is the jail
-Property,Field 5,3dd,3
-Property,Field 6,3dd,3
+Property,Field 5,2dd,2,pink
+Property,Field 6,2dd,2,pink
 ChanceField,Chancefield,If you land here you draw a chancecard
-Property,Field 7,3dd,3
-Property,Field 8,3dd,3
+Property,Field 7,2dd,2,orange
+Property,Field 8,2dd,2,orange
 Jail,jail,This is the jail
-Property,Field 9,3dd,3
-Property,Field 10,3dd,3
+Property,Field 9,3dd,3,red
+Property,Field 10,3dd,3,red
 ChanceField,Chancefield,If you land here you draw a chancecard
-Property,Field 11,3dd,3
-Property,Field 12,3dd,3
+Property,Field 11,3dd,3,yellow
+Property,Field 12,3dd,3,yellow
 Jail,jail,This is the jail
-Property,Field 13,3dd,3
-Property,Field 14,3dd,3
+Property,Field 13,4dd,4,green
+Property,Field 14,4dd,4,green
 ChanceField,Chancefield,If you land here you draw a chancecard
-Property,Field 15,3dd,3
-Property,field 16,3dd,3
+Property,Field 15,4dd,4,blue
+Property,field 16,4dd,4,blue

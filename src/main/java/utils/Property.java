@@ -6,10 +6,12 @@ public class Property extends Field{
 
     //waiting for GUI elements etc, idc what they wanna add.
     private  int rent;
+    private String color;
 
-    public Property(String name, String subtext, int rent, Player owner){
+    public Property(String name, String subtext, int rent, Player owner, String color){
         super(name, subtext, owner, true);
         this.rent=rent;
+        this.color=color;
     }
     // method for making a Player buy the field
     public void buyField(Player buyer){
@@ -50,6 +52,9 @@ public class Property extends Field{
         } else {
 
         }
+    }
+    public String getColor(){
+        return color;
     }
 
     public void setRent(int rent) {

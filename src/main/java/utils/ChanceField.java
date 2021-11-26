@@ -27,4 +27,9 @@ public class ChanceField extends Field
     public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
         chanceDeck.draw(playerController, board);
     }
+
+    @Override
+    public String getColor() {
+        return null;
+    }
 }

@@ -68,4 +68,6 @@ public abstract class Field {
 
     public abstract void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board);
 
+    public abstract String getColor();
+
 }

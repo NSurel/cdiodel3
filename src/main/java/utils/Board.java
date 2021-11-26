@@ -35,12 +35,12 @@ public class Board {
             GUI_Street test = new GUI_Street();
             gui_fields[i] = test;
         }
-        setFieldTexts(fields,gui_fields);
+        setFieldTextsAndColor(fields,gui_fields);
         fieldsOwned = new GUI_Ownable[size];
         for (int i = 0; i < fieldsOwned.length; i++) {
             fieldsOwned[i] = (GUI_Ownable) gui_fields[i];
         }
-        colorFields();
+        //colorFields();
         gui = new GUI(gui_fields,color);
 
     }
@@ -50,14 +50,46 @@ public class Board {
     }
 
     //Set the gui fields titles and subtext to the same as the field[]'s.
-    public void setFieldTexts(ArrayList<Field> fields, GUI_Field[] gui_fields){
+    public void setFieldTextsAndColor(ArrayList<Field> fields, GUI_Field[] gui_fields){
+        Color lightblue = new Color(173,216,230);
+        Color orange = new Color(255,165,0);
+        Color brown = new Color(150,75,0);
         for (int i = 0; i < fields.size(); i++) {
             gui_fields[i].setTitle(fields.get(i).getName());
             gui_fields[i].setDescription(fields.get(i).getSubtext());
             gui_fields[i].setSubText(String.valueOf(fields.get(i).getRent()));
-            if (fields.get(i).getRent()==0)
-            {
+            if (fields.get(i).getRent() == 0) {
                 gui_fields[i].setSubText("");
+            }
+            if (fields.get(i).getFieldType() == "Property") {
+                switch (fields.get(i).getColor()) {
+                    case ("blue"):
+                        gui_fields[i].setBackGroundColor(Color.blue);
+                        break;
+                    case ("brown"):
+                        gui_fields[i].setBackGroundColor(brown);
+                        break;
+                    case ("lightblue"):
+                        gui_fields[i].setBackGroundColor(lightblue);
+                        break;
+                    case ("pink"):
+                        gui_fields[i].setBackGroundColor(Color.pink);
+                        break;
+                    case ("orange"):
+                        gui_fields[i].setBackGroundColor(orange);
+                        break;
+                    case ("red"):
+                        gui_fields[i].setBackGroundColor(Color.red);
+                        break;
+                    case ("yellow"):
+                        gui_fields[i].setBackGroundColor(Color.yellow);
+                        break;
+                    case ("green"):
+                        gui_fields[i].setBackGroundColor(Color.green);
+                        break;
+                    default:
+                        gui_fields[i].setBackGroundColor(Color.gray);
+                }
             }
         }
     }

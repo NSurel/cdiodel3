@@ -43,6 +43,10 @@ public class Jail extends Field {
 
     @Override
     public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
+    }
 
+    @Override
+    public String getColor() {
+        return null;
     }
 }

@@ -68,6 +68,7 @@ public class Main {
         }
         return gaming;
     }
+    //fix this, it is trash
     public static void hasJailCard(PlayerController playerController, Board board){
         if (playerController.getCurrentPlayer().GetGetoutofjailfreecard()&&!board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName().equals(playerController.getCurrentPlayer().getName()+" *")){
             board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).setName(board.getGui_player(playerController.getCurrentPlayer().getPlayerNum()).getName() + " *");

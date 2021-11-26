@@ -29,4 +29,9 @@ public class Start extends Field{
     public void landedOn(ChanceDeck chanceDeck, PlayerController playerController, Board board) {
 
     }
+
+    @Override
+    public String getColor() {
+        return null;
+    }
 }
