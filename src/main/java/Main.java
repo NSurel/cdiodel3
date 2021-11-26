@@ -17,7 +17,8 @@ public class Main {
         turn(playerController,fieldController,board,cup,chanceDeck);
         }
 
-
+        board.msg(findLosingPlayer(playerController).getName() + " has gone bankrupt");
+        board.msg(findWinningPlayer(playerController).getName() + " is the winner of the game!!");
         /*Field[] Hello = new Field[2];
         Property hell02 = new Property("hell" ,"din mor", 2, "Din far");
         Hello[0]= hell02;
@@ -90,5 +91,28 @@ public class Main {
             }
 
         }
+    }
+
+    public static Player findWinningPlayer(PlayerController playerController)
+    {
+        Player winningPLayer = new Player("No one",404);
+        for (Player p : playerController.getAllPlayers() ) {
+            Player fp = playerController.getAllPlayers().get(0);
+            if (p.getAccount().getBalance() > fp.getAccount().getBalance() && p.getAccount().getBalance() > winningPLayer.getAccount().getBalance()){
+                winningPLayer = p;
+            }
+        }
+        return winningPLayer;
+    }
+
+    public static Player findLosingPlayer(PlayerController playerController)
+    {
+        Player losingPlayer = new Player("No one",404);
+        for (Player p : playerController.getAllPlayers() ) {
+            if (p.getAccount().getBalance()<=0){
+                losingPlayer = p;
+            }
+        }
+        return losingPlayer;
     }
 }
