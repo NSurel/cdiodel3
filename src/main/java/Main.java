@@ -19,10 +19,6 @@ public class Main {
 
         board.msg(findLosingPlayer(playerController).getName() + " has gone bankrupt");
         board.msg(findWinningPlayer(playerController).getName() + " is the winner of the game!!");
-        /*Field[] Hello = new Field[2];
-        Property hell02 = new Property("hell" ,"din mor", 2, "Din far");
-        Hello[0]= hell02;
-        System.out.println(Hello[0].getRent());*/
         //TODO
         // Make a method that instanciates the fields
         //      (start with the properties and jail
@@ -31,8 +27,6 @@ public class Main {
 
 
     }
-    //todo
-    // fix turn method to work with the other classes and not just the gui class
     public static void turn(PlayerController playerController, FieldController fieldController,Board board, Cup cup, ChanceDeck chanceDeck) {
         board.rollMsg("It is now " + playerController.getCurrentPlayer().getName() +"'s turn");
         playerController.getCurrentPlayer().updatePos(cup.rollCup(), board);
@@ -68,7 +62,7 @@ public class Main {
 
     public static boolean gameOngoing(PlayerController playerController){
         boolean gaming = true;
-        for (int i = 1; i < playerController.getAllPlayers().size(); i++) {
+        for (int i = 1; i <= playerController.getAllPlayers().size(); i++) {
             if (playerController.getAllPlayers().get(i-1).getAccount().getBalance()<=0){
                 gaming = false;
             }
@@ -96,6 +90,7 @@ public class Main {
     public static Player findWinningPlayer(PlayerController playerController)
     {
         Player winningPLayer = new Player("No one",404);
+        winningPLayer.getAccount().setBalance(0);
         for (Player p : playerController.getAllPlayers() ) {
             Player fp = playerController.getAllPlayers().get(0);
             if (p.getAccount().getBalance() > fp.getAccount().getBalance() && p.getAccount().getBalance() > winningPLayer.getAccount().getBalance()){

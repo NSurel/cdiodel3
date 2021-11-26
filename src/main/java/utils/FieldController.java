@@ -46,17 +46,4 @@ public class FieldController {
         return fields;
     }
 
-    /*public String getCurrentField(){
-        return field.getName();
-    }
-    public void setCurrentField(String Fields){
-        field.setName(Fields);
-
-    }
-    public String getCurrentOwner(){
-        return field.getOwner();
-    }
-    public void setCurrentOwner(String owner){
-        field.setOwner(owner);
-    }*/
 }

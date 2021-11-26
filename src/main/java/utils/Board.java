@@ -6,13 +6,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Board {
-
-    //todo
-    // work on a translator with .txt file to read from
-
-    //todo
-    // change order of methods, to make more sense and make it more readable.
-    // Change methods to be ready for controllers input to the GUI
     GUI_Car car0 = new GUI_Car(Color.RED, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car1 = new GUI_Car(Color.BLUE, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
     GUI_Car car2 = new GUI_Car(Color.PINK, Color.BLACK, GUI_Car.Type.CAR, GUI_Car.Pattern.FILL);
@@ -25,9 +18,6 @@ public class Board {
     GUI_Ownable[] fieldsOwned;
 
     public Board(int size, ArrayList<Field> fields){
-        //todo
-        // make a GUI_Field[] that matches the actual game one
-        // with correspondings titles, subtexts, and backgroundcolors
         gui_fields = new GUI_Field[size];
         Color color = new Color(74,204,84);
         for (int i = 0; i < gui_fields.length; i++) {
@@ -105,10 +95,9 @@ public class Board {
     public int setPlayerAmount(){
         return Integer.valueOf(gui.getUserSelection("how many players?", "2", "3", "4"));
     }
-
+    //add a gui player corresponding to the player from the Player class
     public void addGuiPlayer(Player player)
     {
-
         GUI_Player guiPlayer = new GUI_Player(player.getName(),player.getAccount().getBalance(),cars[carNumber]);
         gui.addPlayer(guiPlayer);
         gui_fields[0].setCar(guiPlayer,true );
@@ -116,9 +105,6 @@ public class Board {
         carNumber++;
     }
 
-    //todo
-    // change to find the Player's location and not GUI_Player
-    //
     public int getLocation(GUI_Player player){
         int i = 0;
         while(!gui_fields[i].hasCar(player)){
@@ -130,7 +116,7 @@ public class Board {
     public void setDie(int facevalue){
         gui.setDie(facevalue);
     }
-
+    //Moves the gui player from the players old position to its new
     public void moveGui_Player(Player player){
         gui_fields[getLocation(getGui_player(player.getPlayerNum()))].setCar(getGui_player(player.getPlayerNum()), false);
         gui_fields[player.getPos()].setCar(getGui_player(player.getPlayerNum()),true);
@@ -150,7 +136,7 @@ public class Board {
 
     public String askMoveOrDraw(){return gui.getUserSelection("Move or draw?","Move","Draw");}
 
-    public int askMoveUpto5() { return Integer.parseInt(gui.getUserSelection("How fare do you want to move?", "1","2","3","4","5"));}
+    public int askMoveUpto5() { return Integer.parseInt(gui.getUserSelection("How far do you want to move?", "1","2","3","4","5"));}
 
     public String askMoveToColor(int colorComp){
         if (colorComp == 0){
