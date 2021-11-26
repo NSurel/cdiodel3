@@ -4,7 +4,7 @@ Property,Pizzaria,1dd,1,brown
 ChanceField,Chancefield,If you land here you draw a chancecard
 Property,Candy store,1dd,1,lightblue
 Property,Ice cream parlour,1dd,1,lightblue
-Jail,Go to jail, Unlucky you go to jail,true
+Jail,Jail,This is the jail if you're visiting don't worry,true
 Property,Museum,2dd,2,pink
 Property,Library,2dd,2,pink
 ChanceField,Chancefield,If you land here you draw a chancecard
@@ -16,7 +16,7 @@ Property,Cinema,3dd,3,red
 ChanceField,Chancefield,If you land here you draw a chancecard
 Property,Toy store,3dd,3,yellow
 Property,Pet store,3dd,3,yellow
-Jail,jail,This is the jail if you're visiting don't worry,true
+Jail,Go to jail,Go to jail,Unlucky you go to jail,true
 Property,Bowling alley,4dd,4,green
 Property,Zoo,4dd,4,green
 ChanceField,Chancefield,If you land here you draw a chancecard
