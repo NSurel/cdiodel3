@@ -162,28 +162,6 @@ public class Board {
     public void updateOwner(int player, int fieldnum){
         fieldsOwned[fieldnum].setBorder(getGui_player(player).getPrimaryColor());
     }
-    //temp coloring of the gui_fields
-    public void colorFields(){
-        Color lightblue = new Color(173,216,230);
-        Color orange = new Color(255,165,0);
-        gui_fields[1].setBackGroundColor(Color.red);
-        gui_fields[2].setBackGroundColor(Color.red);
-        gui_fields[4].setBackGroundColor(Color.yellow);
-        gui_fields[5].setBackGroundColor(Color.yellow);
-        gui_fields[7].setBackGroundColor(Color.green);
-        gui_fields[8].setBackGroundColor(Color.green);
-        gui_fields[10].setBackGroundColor(Color.blue);
-        gui_fields[11].setBackGroundColor(Color.blue);
-        gui_fields[13].setBackGroundColor(Color.orange);
-        gui_fields[14].setBackGroundColor(Color.orange);
-        gui_fields[16].setBackGroundColor(lightblue);
-        gui_fields[17].setBackGroundColor(lightblue);
-        gui_fields[19].setBackGroundColor(Color.pink);
-        gui_fields[20].setBackGroundColor(Color.pink);
-        gui_fields[22].setBackGroundColor(orange);
-        gui_fields[23].setBackGroundColor(orange);
-    }
-
 
     //todo
     // update fieldowner
