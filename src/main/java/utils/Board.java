@@ -23,7 +23,6 @@ public class Board {
     private final GUI gui;
     private final GUI_Field[] gui_fields;
     GUI_Ownable[] fieldsOwned;
-    GUI_Player[] players;
 
     public Board(int size, ArrayList<Field> fields){
         //todo
@@ -40,9 +39,14 @@ public class Board {
         for (int i = 0; i < fieldsOwned.length; i++) {
             fieldsOwned[i] = (GUI_Ownable) gui_fields[i];
         }
-        //colorFields();
         gui = new GUI(gui_fields,color);
+    }
 
+    public GUI_Field[] getGui_fields(){
+        return gui_fields;
+    }
+    public GUI_Ownable[] getownableFields(){
+        return fieldsOwned;
     }
 
     public void msg (String msg){
