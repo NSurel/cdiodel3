@@ -162,11 +162,11 @@ public class Board {
         } else return "none";
 
     }
-
-    public void updateOwner(int player, int fieldnum){
-        fieldsOwned[fieldnum].setBorder(getGui_player(player).getPrimaryColor());
+    public void updateGuiPlayers(PlayerController playerController){
+        for (int i = 1; i < playerController.getPlayerAmount()+1; i++) {
+            getGui_player(i).setBalance(playerController.getAllPlayers().get(i-1).getAccount().getBalance());
+            moveGui_Player(playerController.getAllPlayers().get(i-1));
+        }
     }
 
-    //todo
-    // update fieldowner
 }
