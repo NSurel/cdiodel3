@@ -4,13 +4,13 @@ Property,Pizzaria,1dd,1,brown
 ChanceField,Chancefield,If you land here you draw a chancecard
 Property,Candy store,1dd,1,lightblue
 Property,Ice cream parlour,1dd,1,lightblue
-Jail,Go to jail, Unlucky you go to jail
+Jail,Free parking,You can stay here for free
 Property,Museum,2dd,2,pink
 Property,Library,2dd,2,pink
 ChanceField,Chancefield,If you land here you draw a chancecard
 Property,Skate park,2dd,2,orange
 Property,Swimming pool,2dd,2,orange
-Jail,Free parking,You can stay here for free
+Jail,Go to jail, Unlucky you go to jail
 Property,Arcade,3dd,3,red
 Property,Cinema,3dd,3,red
 ChanceField,Chancefield,If you land here you draw a chancecard
