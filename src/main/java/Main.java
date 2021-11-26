@@ -34,7 +34,7 @@ public class Main {
     //todo
     // fix turn method to work with the other classes and not just the gui class
     public static void turn(PlayerController playerController, FieldController fieldController,Board board, Cup cup, ChanceDeck chanceDeck) {
-        board.rollMsg();
+        board.rollMsg("It is now " + playerController.getCurrentPlayer().getName() +"'s turn");
         playerController.getCurrentPlayer().updatePos(cup.rollCup(), board);
         board.setDie(cup.getDie1().getFacevalue());
         //board.moveGui_Player(playerController.getCurrentPlayer());
@@ -44,7 +44,7 @@ public class Main {
         //hasJailCard(playerController,board);
         updateOwners(fieldController,board);
         board.updateGuiPlayers(playerController);
-        board.msg("It is now " + playerController.getCurrentPlayer().getName() +"'s turn");
+
         playerController.setCurrentPlayer();
 
     }

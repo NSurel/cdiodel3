@@ -68,28 +68,28 @@ public class ChanceDeck {
         chanceDeck.add(MoveToOrange);
 
         ChanceCard MoveToRed = new ChanceCard("Move to a red space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to place", 13);
+        MoveToRed.addAction("Move to place", 13);
         chanceDeck.add(MoveToRed);
 
         ChanceCard MoveToLightBlue = new ChanceCard("Move to a light blue space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to place", 4);
+        MoveToLightBlue.addAction("Move to place", 4);
         chanceDeck.add(MoveToLightBlue);
 
         //Move to one of two colors
         ChanceCard MoveToOrangeOrGreen = new ChanceCard("Move to an orange or green space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to one of two colors", 0);
+        MoveToOrangeOrGreen.addAction("Move to one of two colors", 0);
         chanceDeck.add(MoveToOrangeOrGreen);
 
         ChanceCard MoveToPinkOrDarkBlue = new ChanceCard("Move to a pink or dark blue space. If the space is vacant then buy it, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to one of two colors", 1);
+        MoveToPinkOrDarkBlue.addAction("Move to one of two colors", 1);
         chanceDeck.add(MoveToPinkOrDarkBlue);
 
         ChanceCard MoveToLightBlueOrRed = new ChanceCard("Move to a light blue or red space. If the space is vacant then buy, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to one of two colors", 2);
+        MoveToLightBlueOrRed.addAction("Move to one of two colors", 2);
         chanceDeck.add(MoveToLightBlueOrRed);
 
         ChanceCard MoveToBrownOrYellow = new ChanceCard("Move to a brown or yellow space. If the space is vacant then buy, if not then pay the owner rent.");
-        MoveToOrange.addAction("Move to one of two colors", 3);
+        MoveToBrownOrYellow.addAction("Move to one of two colors", 3);
         chanceDeck.add(MoveToBrownOrYellow);
 
         //Player cards
@@ -135,13 +135,14 @@ public class ChanceDeck {
     //Method for drawing cards from the chance deck. If all cards (20) are drawn the deck is reshuflled.
     public void draw(PlayerController playerController, Board board)
     {
+        numberOfCardsDrawn++;
         if (numberOfCardsDrawn >= chanceDeck.size()){
             shuffle();
             numberOfCardsDrawn = 0;
         }
-        ChanceCard drawnCard = chanceDeck.get(numberOfCardsDrawn);
-        drawnCard.doActions(playerController, this, board);
+        ChanceCard drawnCard = chanceDeck.get(numberOfCardsDrawn-1);
         board.displayChancecard(drawnCard.getString());
-        numberOfCardsDrawn++;
+        drawnCard.doActions(playerController, this, board);
+
     }
 }
